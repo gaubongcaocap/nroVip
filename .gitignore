@@ -1,0 +1,18 @@
+/build/
+/dist/
+/nbbuild/
+/nbdist/
+/out/
+/target/
+/nbproject/private/
+*.log
+*.tmp
+*.temp
+*.bak
+.DS_Store
+Thumbs.db
+
+# IDE
+/.idea/
+/*.iml
+.vscode/
