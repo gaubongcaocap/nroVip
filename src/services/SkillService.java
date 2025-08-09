@@ -1115,7 +1115,7 @@ public class SkillService {
                 dameHit = 0;
             }
             if (plAtt.isBot) {
-                dameHit = dameHit * 850 / 100; // X1.5 dame
+                dameHit = dameHit * 200 / 100; // X1.5 dame
             }
 //            if (dameHit > 2_000_000_000) {
 //                dameHit = 2_000_000_000;
