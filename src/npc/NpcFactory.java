@@ -6,7 +6,6 @@ package npc;
  * @author YourSoulMatee
  */
 import npc.list.*;
-import npc.list.Jaco;
 import boss.BossID;
 import models.Consign.ConsignShopService;
 import services.*;
@@ -35,12 +34,7 @@ import services.func.Input;
 import utils.Logger;
 import utils.Util;
 import models.SuperDivineWater.SuperDivineWaterService;
-import services.SubMenuService;
 import models.ShenronEvent.ShenronEventService;
-import npc.list.Berry;
-import npc.list.CayNeu;
-import npc.list.DuaHau;
-import npc.list.HungVuong;
 import services.func.SummonDragonNamek;
 
 public class NpcFactory {
@@ -273,7 +267,7 @@ public class NpcFactory {
             @Override
             public void confirmMenu(Player player, int select) {
                 switch (player.iDMark.getIndexMenu()) {
-                    case ConstNpc.MENU_OPTION_USE_ITEM1703 -> {
+                    case ConstNpc.MENU_OPTION_USE_ITEM1778 -> {
                         if (select == 0) {
                             IntrinsicService.gI().settltd(player);
                         } else if (select == 1) {
@@ -282,7 +276,7 @@ public class NpcFactory {
                             IntrinsicService.gI().settlxd(player);
                         }
                     }
-                    case ConstNpc.MENU_OPTION_USE_ITEM1704 -> {
+                    case ConstNpc.MENU_OPTION_USE_ITEM1779 -> {
                         if (select == 0) {
                             IntrinsicService.gI().sethdtd(player);
                         } else if (select == 1) {

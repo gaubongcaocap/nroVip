@@ -1449,7 +1449,7 @@ public class ItemService {
 
     public void settlkaio(Player player) {
         for (int i = 0; i < 1; i++) {
-            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1703 + i);
+            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1778 + i);
             int[] dotl = new int[]{555, 556, 562, 563, 561};
 
             int ramdom = new Random().nextInt(dotl.length);
@@ -1478,7 +1478,7 @@ public class ItemService {
 
     public void settlgenki(Player player) {
         for (int i = 0; i < 1; i++) {
-            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1703 + i);
+            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1778 + i);
             int[] dotl = new int[]{555, 556, 562, 563, 561};
 
             int ramdom = new Random().nextInt(dotl.length);
@@ -1506,7 +1506,7 @@ public class ItemService {
 
     public void settlson(Player player) {
         for (int i = 0; i < 1; i++) {
-            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1703 + i);
+            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1778 + i);
             int[] dotl = new int[]{555, 556, 562, 563, 561};
 
             int ramdom = new Random().nextInt(dotl.length);
@@ -1533,7 +1533,7 @@ public class ItemService {
     
      public void settllh(Player player) {
         for (int i = 0; i < 1; i++) {
-            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1703 + i);
+            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1778 + i);
 
             int[] dotl = new int[]{557, 558, 564, 565, 561};
 
@@ -1561,7 +1561,7 @@ public class ItemService {
 
     public void settlpico(Player player) {
         for (int i = 0; i < 1; i++) {
-            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1703 + i);
+            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1778 + i);
 
             int[] dotl = new int[]{557, 558, 564, 565, 561};
 
@@ -1589,7 +1589,7 @@ public class ItemService {
 
     public void settloctieu(Player player) {
         for (int i = 0; i < 1; i++) {
-            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1703 + i);
+            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1778 + i);
             int[] dotl = new int[]{557, 558, 564, 565, 561};
 
             int ramdom = new Random().nextInt(dotl.length);
@@ -1612,7 +1612,7 @@ public class ItemService {
 
     public void settlpiko(Player player) {
         for (int i = 0; i < 1; i++) {
-            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1703 + i);
+            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1778 + i);
             int[] dotl = new int[]{557, 558, 564, 565, 561};
 
             int ramdom = new Random().nextInt(dotl.length);
@@ -1635,7 +1635,7 @@ public class ItemService {
 
     public void settlgalick(Player player) {
         for (int i = 0; i < 1; i++) {
-            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1703 + i);
+            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1778 + i);
             int[] dotl = new int[]{559, 560, 566, 567, 561};
 
             int ramdom = new Random().nextInt(dotl.length);
@@ -1658,7 +1658,7 @@ public class ItemService {
 
     public void settlcadick(Player player) {
         for (int i = 0; i < 1; i++) {
-            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1703 + i);
+            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1778 + i);
             int[] dotl = new int[]{559, 560, 566, 567, 561};
 
             int ramdom = new Random().nextInt(dotl.length);
@@ -1681,7 +1681,7 @@ public class ItemService {
 
     public void settlnappa(Player player) {
         for (int i = 0; i < 1; i++) {
-            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1703 + i);
+            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1778 + i);
 //            Item ao = ItemService.gI().otptl((short) 559);
 //            Item quan = ItemService.gI().otptl((short) 560);
 //            Item gang = ItemService.gI().otptl((short) 566);
@@ -1709,7 +1709,7 @@ public class ItemService {
 
     public void sethdkaio(Player player) {
         for (int i = 0; i < 1; i++) {
-            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1704 + i);
+            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1779 + i);
             int[] dohd = new int[]{650, 651, 657, 658, 656};
 
             int ramdom = new Random().nextInt(dohd.length);
@@ -1735,7 +1735,7 @@ public class ItemService {
 
     public void sethdgenki(Player player) {
         for (int i = 0; i < 1; i++) {
-            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1704 + i);
+            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1779 + i);
             int[] dohd = new int[]{650, 651, 657, 658, 656};
 
             int ramdom = new Random().nextInt(dohd.length);
@@ -1758,7 +1758,7 @@ public class ItemService {
 
     public void sethdson(Player player) {
         for (int i = 0; i < 1; i++) {
-            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1704 + i);
+            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1779 + i);
             int[] dohd = new int[]{650, 651, 657, 658, 656};
 
             int ramdom = new Random().nextInt(dohd.length);
@@ -1781,7 +1781,7 @@ public class ItemService {
     
         public void sethdlh(Player player) {
         for (int i = 0; i < 1; i++) {
-            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1704 + i);
+            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1779 + i);
             int[] dohd = new int[]{652, 653, 659, 660, 656};
 
             int ramdom = new Random().nextInt(dohd.length);
@@ -1804,7 +1804,7 @@ public class ItemService {
 
     public void sethdpico(Player player) {
         for (int i = 0; i < 1; i++) {
-            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1704 + i);
+            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1779 + i);
             int[] dohd = new int[]{652, 653, 659, 660, 656};
 
             int ramdom = new Random().nextInt(dohd.length);
@@ -1827,7 +1827,7 @@ public class ItemService {
 
     public void sethdoctieu(Player player) {
         for (int i = 0; i < 1; i++) {
-            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1704 + i);
+            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1779 + i);
             int[] dohd = new int[]{652, 653, 659, 660, 656};
 
             int ramdom = new Random().nextInt(dohd.length);
@@ -1850,7 +1850,7 @@ public class ItemService {
 
     public void sethdpiko(Player player) {
         for (int i = 0; i < 1; i++) {
-            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1704 + i);
+            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1779 + i);
             int[] dohd = new int[]{652, 653, 659, 660, 656};
 
             int ramdom = new Random().nextInt(dohd.length);
@@ -1873,7 +1873,7 @@ public class ItemService {
 
     public void sethdcadick(Player player) {
         for (int i = 0; i < 1; i++) {
-            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1704 + i);
+            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1779 + i);
             int[] dohd = new int[]{654, 655, 661, 662, 656};
 
             int ramdom = new Random().nextInt(dohd.length);
@@ -1896,7 +1896,7 @@ public class ItemService {
 
     public void sethdcadic(Player player) {
         for (int i = 0; i < 1; i++) {
-            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1704 + i);
+            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1779 + i);
             int[] dohd = new int[]{654, 655, 661, 662, 656};
 
             int ramdom = new Random().nextInt(dohd.length);
@@ -1919,7 +1919,7 @@ public class ItemService {
 
     public void sethdnappa(Player player) {
         for (int i = 0; i < 1; i++) {
-            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1704 + i);
+            Item hq = InventoryService.gI().findItem(player.inventory.itemsBag, 1779 + i);
             int[] dohd = new int[]{654, 655, 661, 662, 656};
 
             int ramdom = new Random().nextInt(dohd.length);

@@ -350,8 +350,8 @@ public class ConstNpc {
     public static final int SET_HDTD = 1300;
     public static final int SET_HDNM = 1301;
     public static final int SET_HDXD = 1302;
-    public static final int MENU_OPTION_USE_ITEM1703 = 1703;
-    public static final int MENU_OPTION_USE_ITEM1704 = 1704;
+    public static final int MENU_OPTION_USE_ITEM1778 = 1778;
+    public static final int MENU_OPTION_USE_ITEM1779 = 1779;
     public static final int MENU_OPTION_USE_ITEM1536 = 1536;
     public static int RECEIVE_GIFT_MENU=12121;
 }
