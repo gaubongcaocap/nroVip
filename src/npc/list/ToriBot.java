@@ -30,7 +30,7 @@ public class ToriBot extends Npc {
                         + "|0| Mỗi lần nâng VIP có hiệu lực trong 30 ngày.\n"
                         + "|0| Sau 30 ngày, bạn cần nâng cấp lại để duy trì quyền lợi.\n"
                         + "|0| Lưu ý: Bạn chỉ có thể nâng cấp VIP 1 lần duy nhất.\n",
-                        "Vip 1", "Vip 2", "Vip 3", "Vip 4", "Status","Cửa hàng\nTrân Dị", "Đóng");
+                        "Vip 1", "Vip 2", "Vip 3", "Vip 4", "Status", "Cửa hàng\nTrân Dị", "Đóng");
             }
         }
     }
@@ -44,73 +44,76 @@ public class ToriBot extends Npc {
                         case 4 -> { // Tình Trạng VIP
                             this.createOtherMenu(player, 3422,
                                     ConstFont.BOLD_GREEN + "VIP STATUS"
-                                    + (player.vip == 1 ? "\n|7|Trạng Thái VIP : VIP 1"
-                                            : player.vip == 2 ? "\n|7|Trạng Thái VIP : VIP 2"
-                                                    : player.vip == 3 ? "\n|7|Trạng Thái VIP : VIP 3"
-                                                            : player.vip == 4 ? "\n|7|Trạng Thái VIP : VIP 4"
-                                                                    : player.vip == 0 ? "\n|7|Trạng Thái VIP : Không có"
-                                                                    : "")
-                                    + "\n|0|Cảm Ơn Đã Ủng Hộ Ngọc Rồng VOZ"
-                                    + ((player.vip != 0 && player.timevip != null)
-                                            ? "\nHạn còn : " + Util.soNgayConLai(player.timevip)
-                                            : "")
-                                    + ((player.vip != 0 && player.timevip != null)
-                                            ? "\nNgày mua VIP: " + player.timevip.toString() // Hiển thị ngày mua VIP nếu không null
-                                            : ""),
+                                            + (player.vip == 1 ? "\n|7|Trạng Thái VIP : VIP 1"
+                                                    : player.vip == 2 ? "\n|7|Trạng Thái VIP : VIP 2"
+                                                            : player.vip == 3 ? "\n|7|Trạng Thái VIP : VIP 3"
+                                                                    : player.vip == 4 ? "\n|7|Trạng Thái VIP : VIP 4"
+                                                                            : player.vip == 0
+                                                                                    ? "\n|7|Trạng Thái VIP : Không có"
+                                                                                    : "")
+                                            + "\n|0|Cảm Ơn Đã Ủng Hộ Ngọc Rồng VOZ"
+                                            + ((player.vip != 0 && player.timevip != null)
+                                                    ? "\nHạn còn : " + Util.soNgayConLai(player.timevip)
+                                                    : "")
+                                            + ((player.vip != 0 && player.timevip != null)
+                                                    ? "\nNgày mua VIP: " + player.timevip.toString() // Hiển thị ngày
+                                                                                                     // mua VIP nếu
+                                                                                                     // không null
+                                                    : ""),
                                     "Đóng");
                         }
 
                         case 0 -> { // Chọn VIP1
                             this.createOtherMenu(player, 223,
                                     "|0|Nâng Cấp VIP 1: 500.000 Điểm Mùa\n"
-                                    + "- Tặng 1 Đệ Tử\n"
-                                    + "- 16 Thỏi Vàng\n"
-                                    + "- 10 Phiếu Giảm Giá 80%\n"
-                                    + "- 5 Đá Bảo Vệ\n"
-                                    + "- Cải Trang Black Goku 30 Ngày\n"
-                                    + "- Cá Zombie 30 Ngày\n"
-                                    + "- Pet Chó 3 Đầu Địa Ngục 30 Ngày\n",
+                                            + "- Tặng 1 Đệ Tử\n"
+                                            + "- 16 Thỏi Vàng\n"
+                                            + "- 10 Phiếu Giảm Giá 80%\n"
+                                            + "- 5 Đá Bảo Vệ\n"
+                                            + "- Cải Trang Black Goku 30 Ngày\n"
+                                            + "- Cá Zombie 30 Ngày\n"
+                                            + "- Pet Chó 3 Đầu Địa Ngục 30 Ngày\n",
                                     "500.000 VND", "Đóng");
                         }
                         case 1 -> { // Chọn VIP2
                             this.createOtherMenu(player, 224,
                                     "|0|Nâng Cấp VIP 2: 1.000.000 Điểm Mùa\n"
-                                    + "- Tặng 1 Đệ Tử\n"
-                                    + "- 32 Thỏi Vàng\n"
-                                    + "- 10 Phiếu Giảm Giá 80%\n"
-                                    + "- 10 Thẻ Rồng Thần Namek\n"
-                                    + "- 10 Đá Bảo Vệ\n"
-                                    + "- Cải Trang Black Goku Vĩnh Viễn\n"
-                                    + "- Cá Zombie Vĩnh Viễn\n"
-                                    + "- Pet Chó 3 Đầu Địa Ngục Vĩnh Viễn\n",
+                                            + "- Tặng 1 Đệ Tử\n"
+                                            + "- 32 Thỏi Vàng\n"
+                                            + "- 10 Phiếu Giảm Giá 80%\n"
+                                            + "- 10 Thẻ Rồng Thần Namek\n"
+                                            + "- 10 Đá Bảo Vệ\n"
+                                            + "- Cải Trang Black Goku Vĩnh Viễn\n"
+                                            + "- Cá Zombie Vĩnh Viễn\n"
+                                            + "- Pet Chó 3 Đầu Địa Ngục Vĩnh Viễn\n",
                                     "1.000.000 VND", "Đóng");
                         }
                         case 2 -> { // Chọn VIP3
                             this.createOtherMenu(player, 225,
                                     "|0|Nâng Cấp VIP 3: 3.000.000 Điểm Mùa\n"
-                                    + "- Tặng 1 Đệ Tử\n"
-                                    + "- 64 Thỏi Vàng\n"
-                                    + "- 10 Phiếu Giảm Giá 80%\n"
-                                    + "- 20 Đá Bảo Vệ\n"
-                                    + "- 10 Thẻ Tiểu Đội Trưởng Vàng\n"
-                                    + "- Cải Trang Black Goku Rose 30 Ngày\n"
-                                    + "- 1 Capsule Thần Linh\n"
-                                    + "- Cánh Thiên Thần - Ác Quỷ 30 Ngày\n"
-                                    + "- Pet Capybara 30 Ngày\n",
+                                            + "- Tặng 1 Đệ Tử\n"
+                                            + "- 64 Thỏi Vàng\n"
+                                            + "- 10 Phiếu Giảm Giá 80%\n"
+                                            + "- 20 Đá Bảo Vệ\n"
+                                            + "- 10 Thẻ Tiểu Đội Trưởng Vàng\n"
+                                            + "- Cải Trang Black Goku Rose 30 Ngày\n"
+                                            + "- 1 Capsule Thần Linh\n"
+                                            + "- Cánh Thiên Thần - Ác Quỷ 30 Ngày\n"
+                                            + "- Pet Capybara 30 Ngày\n",
                                     "3.000.000 VND", "Đóng");
                         }
                         case 3 -> { // Chọn SVIP
                             this.createOtherMenu(player, 226,
                                     "|0|Nâng Cấp VIP 4: 5.000.000 Điểm Mùa\n"
-                                    + "- Tặng 1 Đệ Tử\n"
-                                    + "- 128 Thỏi Vàng\n"
-                                    + "- 10 Phiếu Giảm Giá 80%\n"
-                                    + "- 50 Đá Bảo Vệ\n"
-                                    + "- 20 Thẻ Tiểu Đội Trưởng Vàng & Namek\n"
-                                    + "- Cải Trang Black Goku Rose 30 Ngày\n"
-                                    + "- 2 Capsule Đồ Thần Linh\n"
-                                    + "- Cánh Thiên Thần - Ác Quỷ Vĩnh Viễn\n"
-                                    + "- Pet Capybara Vĩnh Viễn\n",
+                                            + "- Tặng 1 Đệ Tử\n"
+                                            + "- 128 Thỏi Vàng\n"
+                                            + "- 10 Phiếu Giảm Giá 80%\n"
+                                            + "- 50 Đá Bảo Vệ\n"
+                                            + "- 20 Thẻ Tiểu Đội Trưởng Vàng & Namek\n"
+                                            + "- Cải Trang Black Goku Rose 30 Ngày\n"
+                                            + "- 2 Capsule Đồ Thần Linh\n"
+                                            + "- Cánh Thiên Thần - Ác Quỷ Vĩnh Viễn\n"
+                                            + "- Pet Capybara Vĩnh Viễn\n",
                                     "5.000.000 VND", "Đóng");
                         }
                         case 5 -> ShopService.gI().opendShop(player, "TORI_BOT", true);
@@ -138,7 +141,8 @@ public class ToriBot extends Npc {
                             PlayerDAO.subcash(player, 500_000);
                             this.npcChat(player, "Kích hoạt thành công: VIP 1");
                         } else {
-                            Service.gI().sendThongBao(player, "điểm tích lũy chưa đủ.\nTruy Cập: " + ServerManager.DOMAIN + "\n để nạp thêm");
+                            Service.gI().sendThongBao(player,
+                                    "điểm tích lũy chưa đủ.\nTruy Cập: " + ServerManager.DOMAIN + "\n để nạp thêm");
                         }
                     }
                     break;
@@ -167,7 +171,8 @@ public class ToriBot extends Npc {
                             PlayerDAO.subcash(player, 1_000_000);
                             this.npcChat(player, "Kích hoạt thành công: VIP 2");
                         } else {
-                            Service.gI().sendThongBaoOK(player, "điểm tích lũy chưa đủ.\nTruy Cập: " + ServerManager.DOMAIN + "\n để nạp thêm");
+                            Service.gI().sendThongBaoOK(player,
+                                    "điểm tích lũy chưa đủ.\nTruy Cập: " + ServerManager.DOMAIN + "\n để nạp thêm");
                         }
                     }
                     break;
@@ -198,7 +203,8 @@ public class ToriBot extends Npc {
                             PlayerDAO.subcash(player, 3_000_000);
                             this.npcChat(player, "Kích hoạt thành công: VIP 3");
                         } else {
-                            Service.gI().sendThongBaoOK(player, "điểm tích lũy chưa đủ.\nTruy Cập: " + ServerManager.DOMAIN + "\n để nạp thêm");
+                            Service.gI().sendThongBaoOK(player,
+                                    "điểm tích lũy chưa đủ.\nTruy Cập: " + ServerManager.DOMAIN + "\n để nạp thêm");
                         }
                     }
                     break;
@@ -226,7 +232,8 @@ public class ToriBot extends Npc {
                             PlayerDAO.subcash(player, 5_000_000);
                             this.npcChat(player, "Kích hoạt thành công: VIP 4");
                         } else {
-                            Service.gI().sendThongBaoOK(player, "điểm tích lũy chưa đủ.\nTruy Cập: " + ServerManager.DOMAIN + "\n để nạp thêm");
+                            Service.gI().sendThongBaoOK(player,
+                                    "điểm tích lũy chưa đủ.\nTruy Cập: " + ServerManager.DOMAIN + "\n để nạp thêm");
                         }
                     }
                     break;

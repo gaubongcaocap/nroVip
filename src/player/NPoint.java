@@ -968,8 +968,8 @@ public class NPoint {
                         || ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2)) {
             hpMax += (hpMax * 25 / 100L);
         }
-        // Zalo: 0385436233
-        if (this.player.pet != null && this.player.fusion.typeFusion != ConstPlayer.NON_FUSION) {// Zalo: 0385436233
+        
+        if (this.player.pet != null && this.player.fusion.typeFusion != ConstPlayer.NON_FUSION) {
             if (this.player.pet.typePet >= 5) {
                 hpMax += this.player.pet.nPoint.hpMax * this.player.getPointfusion().getHpFusion() / 100L;
             }
@@ -1057,7 +1057,7 @@ public class NPoint {
 
     private void setHp() {
         // Giới hạn giá trị hp không vượt quá hpMax
-        if (this.hp > this.hpMax) {// Zalo: 0385436233
+        if (this.hp > this.hpMax) {
             // this.hp = this.hpMax;
         }
     }
@@ -1118,7 +1118,7 @@ public class NPoint {
                         || ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2)) {
             mpMax += (this.mpMax * 25 / 100L);// MP black
         }
-        if (this.player.pet != null && this.player.fusion.typeFusion != ConstPlayer.NON_FUSION) {// Zalo: 0385436233
+        if (this.player.pet != null && this.player.fusion.typeFusion != ConstPlayer.NON_FUSION) {
             if (this.player.pet.typePet >= 5) {
                 mpMax += this.player.pet.nPoint.mpMax * this.player.getPointfusion().getMpFusion() / 100L;
             }
@@ -1186,7 +1186,7 @@ public class NPoint {
     }
 
     private void setMp() {
-        if (this.mp > this.mpMax) {// Zalo: 0385436233
+        if (this.mp > this.mpMax) {
             // this.mp = this.mpMax;
         }
     }
@@ -1254,7 +1254,7 @@ public class NPoint {
                         || ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2)) {
             dame += (dame * 25 / 100L);
         }
-        if (this.player.pet != null && this.player.fusion.typeFusion != ConstPlayer.NON_FUSION) {// Zalo: 0385436233
+        if (this.player.pet != null && this.player.fusion.typeFusion != ConstPlayer.NON_FUSION) {
             if (this.player.pet.typePet >= 5) {
                 dame += this.player.pet.nPoint.dame * this.player.getPointfusion().getDameFusion() / 100L;
             }

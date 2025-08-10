@@ -31,7 +31,7 @@ public class QuocVuong extends Npc {
                 Item mcl = InventoryService.gI().findItemBagByTemp(player, ConstTranhNgocNamek.ITEM_TRANH_NGOC);
                 int slMCL = (mcl == null) ? 0 : mcl.quantity;
                 this.createOtherMenu(player, ConstNpc.BASE_MENU,
-                        "Đang diễn ra sự kiện đua top thu thập đồng xu\n|4|"
+                        "Đang diễn ra sự kiện đua top thu thập đồng xu\n"
                                 + "Truy cập http://javhd.pro để biết thêm thông tin sự kiện",
                         "Tham gia", "Đổi điểm\nThưởng\n[" + slMCL + "]", "Bảng\nxếp hạng", "Từ chối");
                 // "Bảng\nxếp hạng", "Từ chối");

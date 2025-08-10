@@ -8,16 +8,16 @@ package npc.specialnpc;
 
 import data.DataGame;
 import services.func.ChangeMapService;
-import services.PetService;
 import player.Player;
 import utils.Util;
 import network.Message;
+import services.PetService;
 import services.Service;
 import utils.Logger;
 
 public class MabuEgg {
 
-//    private static final long DEFAULT_TIME_DONE = 7776000000L;
+    // private static final long DEFAULT_TIME_DONE = 7776000000L;
     private static final long DEFAULT_TIME_DONE = 86400000L;
 
     private Player player;

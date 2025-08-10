@@ -98,8 +98,8 @@ public class QuyLaoKame extends Npc {
                                     "Chào con, ta rất vui khi gặp con\nCon muốn làm gì nào ?", menus);
                         }
                         case 1 -> {
-//                            ShopService.gI().opendShop(player, "SKILL_NEW", true);
-                            Service.gI().sendThongBao(player, "Chưa mở");
+                            ShopService.gI().opendShop(player, "SKILL_NEW", true);
+                            // Service.gI().sendThongBao(player, "Chưa mở");
                         }
                         case 2 -> {
                             this.createOtherMenu(player, 1115, "Nạp đạt mốc nhận quà he :3", "Xem quà mốc nạp", "Nhận quà mốc nạp", "Đóng");

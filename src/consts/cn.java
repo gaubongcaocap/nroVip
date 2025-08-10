@@ -96,12 +96,30 @@ public class cn {
     public static int de29 = 1200000 * GIA_X;
     public static int de30 = 1500000 * GIA_X;
     //giá đệ vip 3
-    public static int de31 = 40000 * GIA_X;
+    public static int de31 = 50000 * GIA_X;
     public static int de32 = 70000 * GIA_X;
     public static int de33 = 100000 * GIA_X;
     public static int de34 = 200000 * GIA_X;
     public static int de35 = 500000 * GIA_X;
-    public static int de36 = 350000 * GIA_X;
+    public static int de36 = 750000 * GIA_X;
+    public static int de37 = 20000 * GIA_X;
+
+    public static int de38 = 50  * GIA_X;
+    public static int de39 = 100 * GIA_X;
+    public static int de40 = 150 * GIA_X;
+    public static int de41 = 200 * GIA_X;
+    public static int de42 = 250 * GIA_X;
+    public static int de43 = 350 * GIA_X;
+    public static int de44 = 750 * GIA_X;
+
+    public static String petBuuNhiNm = "Bưu Nhí";
+    public static String petFideNhiNm = "Fide Nhí";
+    public static String petCellNhiNm = "Cell Nhí";
+    public static String petAndroidNm = "Android";
+    public static String petBuuGayNm = "Bưu Gầy";
+    public static String petBerrusNhiNm = "Berrus Nhí";
+    public static String petBlackNm = "Black Goku";
+
     //giá đổi skill
     public static int skill23 = 3000;
     public static int skill24 = 10000;

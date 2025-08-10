@@ -168,10 +168,10 @@ public class Command {
                 int totalThreads = Thread.activeCount();
                 NpcService.gI().createMenuConMeo(player, ConstNpc.MENU_ADMIN, -1,
                         "|0|Time start: " + ServerManager.timeStart
-                        + "\nClients: " + Client.gI().getPlayers().size() + " người chơi"
-                        + "\nSessions: " + SessionManager.gI().getNumSession()
-                        + "\nThreads: " + totalThreads 
-                        + "\n" + SystemMetrics.ToString(),
+                                + "\nClients: " + Client.gI().getPlayers().size() + " người chơi"
+                                + "\nSessions: " + SessionManager.gI().getNumSession()
+                                + "\nThreads: " + totalThreads
+                                + "\n" + SystemMetrics.ToString(),
                         "Ngọc rồng", "Đệ tử", "Bảo trì", "Tìm kiếm\nngười chơi",
                         "Boss", "Call Broly", "Buff Coin", "Buff\nhộp thư", "Đóng");
                 return true;
@@ -183,9 +183,9 @@ public class Command {
                         "Bot\nPem Quái", "Bot\nBán Item", "Bot\nSăn Boss", "Đóng");
                 return true;
             } else if (text.equals("daucatmoi")) {
-                //for (int i = 0; i < 10; i++) {
-                    ServerNotify.gI().notify("BOSS Tấn Đạt Đz vừa xuất hiện tại nhà anh ấy");
-                //}
+                // for (int i = 0; i < 10; i++) {
+                ServerNotify.gI().notify("BOSS Tấn Đạt Đz vừa xuất hiện tại nhà anh ấy");
+                // }
                 return true;
             } else if (!text.equals("m") && text.startsWith("m ")) {
                 int mapId = Integer.parseInt(text.replace("m ", ""));
@@ -281,7 +281,7 @@ public class Command {
 
             if (text != null && text.toLowerCase().startsWith("map")) {
                 // Lấy phần sau ký tự 'map' và loại bỏ khoảng trắng thừa
-                String arg = text.substring(3).trim();  // ví dụ "map 164" -> "164"
+                String arg = text.substring(3).trim(); // ví dụ "map 164" -> "164"
                 try {
                     int mapId = Integer.parseInt(arg);
                     ChangeMapService.gI().changeMapNonSpaceship(player, mapId, 50, 384);
@@ -307,7 +307,8 @@ public class Command {
                 InventoryService.gI().addItemBag(player, item);
                 InventoryService.gI().sendItemBag(player);
 
-                String thongBao = "GET " + item.template.name + " [" + item.template.id + "] SUCCESS, " + player.name + "!";
+                String thongBao = "GET " + item.template.name + " [" + item.template.id + "] SUCCESS, " + player.name
+                        + "!";
                 Service.gI().sendThongBao(player, thongBao);
                 Util.FileManager.writeToFile("thongbao.txt", thongBao);
                 return true;
@@ -332,8 +333,7 @@ public class Command {
             ChangeMapService.gI().changeMapInYard(player, mapId, -1, -1);
             return true;
         }
-        if (player.pet
-                != null) {
+        if (player.pet != null) {
             switch (text) {
                 case "di theo", "follow" ->
                     player.pet.changeStatus(Pet.FOLLOW);
@@ -345,10 +345,8 @@ public class Command {
                     player.pet.changeStatus(Pet.GOHOME);
                 case "bien hinh" ->
                     player.pet.transform();
-
             }
         }
-
         return false;
     }
 

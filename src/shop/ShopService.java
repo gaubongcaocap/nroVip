@@ -624,12 +624,12 @@ public class ShopService {
         opendShop(player, shop.tagName, true);
     }
 
-    private void buyItemVND(Player player, int itemTempId) {// Zalo: 0385436233
+    private void buyItemVND(Player player, int itemTempId) {
         Shop shop = player.iDMark.getShopOpen();
         ItemShop is = shop.getItemShop(itemTempId);
         int pointExchange = 0;
         int evPoint = player.getSession().cash;
-        if (is == null) {// Zalo: 0385436233
+        if (is == null) {
             Service.gI().sendThongBao(player, "Item shop bị lỗi vui lòng báo admin");
             return;
         }
@@ -656,12 +656,12 @@ public class ShopService {
         }
     }
 
-    private void buyItemNHS(Player player, int itemTempId) {// Zalo: 0385436233
+    private void buyItemNHS(Player player, int itemTempId) {
         Shop shop = player.iDMark.getShopOpen();
         ItemShop is = shop.getItemShop(itemTempId);
         int pointExchange = 0;
         int evPoint = player.event.getEventPointNHS();
-        if (is == null) {// Zalo: 0385436233
+        if (is == null) {
             Service.gI().sendThongBao(player, "Item shop bị lỗi vui lòng báo admin");
             return;
         }
@@ -688,12 +688,12 @@ public class ShopService {
         }
     }
 
-    private void buyItemBHM(Player player, int itemTempId) {// Zalo: 0385436233
+    private void buyItemBHM(Player player, int itemTempId) {
         Shop shop = player.iDMark.getShopOpen();
         ItemShop is = shop.getItemShop(itemTempId);
         int pointExchange = 0;
         int evPoint = player.event.getEventPointBHM();
-        if (is == null) {// Zalo: 0385436233
+        if (is == null) {
             Service.gI().sendThongBao(player, "Item shop bị lỗi vui lòng báo admin");
             return;
         }
@@ -720,12 +720,12 @@ public class ShopService {
         }
     }
 
-    private void buyItemQuyLao(Player player, int itemTempId) {// Zalo: 0385436233
+    private void buyItemQuyLao(Player player, int itemTempId) {
         Shop shop = player.iDMark.getShopOpen();
         ItemShop is = shop.getItemShop(itemTempId);
         int pointExchange = 0;
         int evPoint = player.event.getEventPointQuyLao();
-        if (is == null) {// Zalo: 0385436233
+        if (is == null) {
             Service.gI().sendThongBao(player, "Item shop bị lỗi vui lòng báo admin");
             return;
         }
@@ -827,20 +827,20 @@ public class ShopService {
             if (!this.subIemByItemShop(player, is)) {
                 return;
             }
-        } else if (shop.tagName.equals("SHOP_VND")) {// Zalo: 0385436233
-            if (!subMoneyByItemShop(player, is)) {// Zalo: 0385436233
+        } else if (shop.tagName.equals("SHOP_VND")) {
+            if (!subMoneyByItemShop(player, is)) {
                 return;
             }
-        } else if (shop.tagName.equals("SHOP_NHS")) {// Zalo: 0385436233
-            if (!subMoneyByItemShop(player, is)) {// Zalo: 0385436233
+        } else if (shop.tagName.equals("SHOP_NHS")) {
+            if (!subMoneyByItemShop(player, is)) {
                 return;
             }
-        } else if (shop.tagName.equals("SHOP_BHM")) {// Zalo: 0385436233
-            if (!subMoneyByItemShop(player, is)) {// Zalo: 0385436233
+        } else if (shop.tagName.equals("SHOP_BHM")) {
+            if (!subMoneyByItemShop(player, is)) {
                 return;
             }
-        } else if (shop.tagName.equals("SHOP_QUY_LAO")) {// Zalo: 0385436233
-            if (!subMoneyByItemShop(player, is)) {// Zalo: 0385436233
+        } else if (shop.tagName.equals("SHOP_QUY_LAO")) {
+            if (!subMoneyByItemShop(player, is)) {
                 return;
             }
         }
@@ -913,17 +913,17 @@ public class ShopService {
     private boolean buyMoRongHanhTrang(Player player, ItemShop itemShop) {
         boolean isBuy = false;
         if (itemShop.temp.id == 518 || itemShop.temp.id == 517 || itemShop.temp.id == 1627) {
-            if (itemShop.temp.id == 1627 && player.inventory.itemsBag.size() >= 150) {
+            if (itemShop.temp.id == 1627 && player.inventory.itemsBag.size() >= 200) {
                 Service.gI().sendThongBao(player, "Đã đạt mức tối đa");
                 Service.gI().sendMoney(player);
                 return true;
             }
-            if (itemShop.temp.id == 517 && player.inventory.itemsBag.size() >= 100) {
+            if (itemShop.temp.id == 517 && player.inventory.itemsBag.size() >= 150) {
                 Service.gI().sendThongBao(player, "Đã đạt mức tối đa");
                 Service.gI().sendMoney(player);
                 return true;
             }
-            if (itemShop.temp.id == 518 && player.inventory.itemsBox.size() >= 100) {
+            if (itemShop.temp.id == 518 && player.inventory.itemsBox.size() >= 150) {
                 Service.gI().sendThongBao(player, "Đã đạt mức tối đa");
                 Service.gI().sendMoney(player);
                 return true;

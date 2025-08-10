@@ -318,7 +318,7 @@ public class Input {
                     if (player.isAdmin()) {
                         Item item = ItemService.gI().createNewItem(((short) id));
                         List<Item.ItemOption> ops = ItemService.gI().getListOptionItemShop((short) id);
-                        if (!ops.isEmpty()) {
+                        if (!ops.isEmpty() && item.template.id != 933) {
                             item.itemOptions = ops;
                         }
                         item.quantity = q;

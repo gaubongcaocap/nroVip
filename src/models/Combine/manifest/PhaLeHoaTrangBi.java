@@ -16,23 +16,23 @@ public class PhaLeHoaTrangBi {
     private static float getRatio(int star) {
         return switch (star) {
             case 0 ->
-                50;
+                80;
             case 1 ->
-                20;
+                50;
             case 2 ->
-                10;
+                20;
             case 3 ->
-                5;
+                10;
             case 4 ->
-                3;
+                5;
             case 5 ->
                 2;
             case 6 ->
-                0.9f;
+                1f;
             case 7 ->
                 0.5f;
             case 8 ->
-                0.18f;
+                0.1f;
             case 9 ->
                 0.07f;
             default ->
@@ -185,7 +185,7 @@ public class PhaLeHoaTrangBi {
 
             if (success) {
                 item.addOptionParam(107, 1);
-                if (star == 9) {
+                if (star + 1 == 9) {
                     String message = "Chúc mừng " + player.name + " vừa pha lê hóa thành công "
                             + item.template.name + " lên " + (star + 1) + " sao pha lê. Mọi người đều ngưỡng mộ";
 

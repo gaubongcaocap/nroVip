@@ -34,7 +34,7 @@ public class LanCon extends Boss {
     public void joinMap() {
         if (zoneFinal != null) {
             joinMapByZone(zoneFinal);
-            this.notifyJoinMap();
+            // this.notifyJoinMap();
             this.changeStatus(BossStatus.CHAT_S);
             this.wakeupAnotherBossWhenAppear();
             return;

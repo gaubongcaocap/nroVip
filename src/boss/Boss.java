@@ -496,10 +496,10 @@ public class Boss extends Player implements IBoss, IBossOutfit {
 
     protected void notifyJoinMap() {
         if (canSendNotify()) {
-
-            String message = "BOSS " + this.name + " vừa xuất hiện tại " + this.zone.map.mapName;
-            ServerNotify.gI().notify(message);
-
+            if(this.name != "Sói hẹc quyn") {
+                String message = "BOSS " + this.name + " vừa xuất hiện tại " + this.zone.map.mapName;
+                ServerNotify.gI().notify(message);
+            }
         }
     }
 

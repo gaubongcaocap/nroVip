@@ -41,8 +41,8 @@ public class DaiThienSu extends Npc {
                 //                + "diễn ra từ " + Manager.timeStartDuaTop + " đến " + Manager.timeEndDuaTop + "\n"
                 //                + "Giải thưởng khủng chưa từng có, xem chi tiết tại diễn đàn, fanpage\n"
                 //                + Manager.demTimeSuKien(),
-                "|0|Đang diễn ra sự kiện đua top mùa 1\n|3|"
-                + "Thể lệ đua top mùa 1:\n|4|"
+                "Đang diễn ra sự kiện đua top mùa 1\n"
+                + "Thể lệ đua top mùa 1:\n"
                 + "- Thời gian tạo acc tại thời điểm sự kiện diễn ra\n"
                 + "- Quà sẽ được gửi về hộp thư tại nhà hoặc quy lão kame sau khi sự kiện hết thúc!",
                 "Đua Top\n Sức mạnh", "Đua top\n Nạp", "Top Nhiệm Vụ");
