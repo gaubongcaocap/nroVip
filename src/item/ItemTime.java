@@ -290,17 +290,17 @@ public class ItemTime {
                 isUseDK = false;
             }
         }
-        if (isOpenPower) {
-            if (Util.canDoWithTime(lastTimeOpenPower, TIME_OPEN_POWER)) {
-                player.nPoint.limitPower++;
-                if (player.nPoint.limitPower > NPoint.MAX_LIMIT) {
-                    player.nPoint.limitPower = NPoint.MAX_LIMIT;
-                }
-                player.nPoint.initPowerLimit();
-                Service.gI().sendThongBao(player, "Giới hạn sức mạnh của bạn đã được tăng lên 1 bậc");
-                isOpenPower = false;
-            }
-        }
+        // if (isOpenPower) {
+        //     if (Util.canDoWithTime(lastTimeOpenPower, TIME_OPEN_POWER)) {
+        //         player.nPoint.limitPower++;
+        //         if (player.nPoint.limitPower > NPoint.MAX_LIMIT) {
+        //             player.nPoint.limitPower = NPoint.MAX_LIMIT;
+        //         }
+        //         player.nPoint.initPowerLimit();
+        //         Service.gI().sendThongBao(player, "Giới hạn sức mạnh của bạn đã được tăng lên 1 bậc");
+        //         isOpenPower = false;
+        //     }
+        // }
         if (isUseMayDo) {
             if (Util.canDoWithTime(lastTimeUseMayDo, TIME_MAY_DO)) {
                 isUseMayDo = false;

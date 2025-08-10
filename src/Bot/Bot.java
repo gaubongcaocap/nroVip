@@ -197,13 +197,17 @@ public class Bot extends Player {
     }
 
     public boolean UseLastTimeSkill() {
-        if (this.playerSkill.skillSelect.lastTimeUseThisSkillbot < (System.currentTimeMillis()
-                - this.playerSkill.skillSelect.coolDown)) {
-            this.playerSkill.skillSelect.lastTimeUseThisSkillbot = System.currentTimeMillis();
-            return true;
-        } else {
+        // Nếu chưa có kỹ năng thì không tung skill
+        if (this.playerSkill == null || this.playerSkill.skillSelect == null) {
             return false;
         }
+        long now = System.currentTimeMillis();
+        if (this.playerSkill.skillSelect.lastTimeUseThisSkillbot < 
+            (now - this.playerSkill.skillSelect.coolDown)) {
+            this.playerSkill.skillSelect.lastTimeUseThisSkillbot = now;
+            return true;
+        }
+        return false;
     }
 
     private void increasePoint() {

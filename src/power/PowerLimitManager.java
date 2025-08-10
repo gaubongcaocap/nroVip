@@ -32,7 +32,7 @@ public class PowerLimitManager {
     public void load() {
         try {
             try (Connection con = DBConnecter.getConnectionServer();) {
-                PreparedStatement ps = con.prepareStatement("SELECT * FROM `power_limit`");
+                PreparedStatement ps = con.prepareStatement("SELECT * FROM `power_limit` ORDER BY id ASC");
                 ResultSet rs = ps.executeQuery();
                 try {
                     while (rs.next()) {

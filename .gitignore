@@ -3,6 +3,7 @@
 /nbbuild/
 /nbdist/
 /out/
+/admin-page/node_modules/
 /target/
 /nbproject/private/
 *.log

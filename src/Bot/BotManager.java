@@ -25,7 +25,8 @@ public class BotManager implements Runnable {
         }
             return i;
     }
-       @Override
+
+    @Override
     public void run() {
         while (ServerManager.isRunning) {
             try {
@@ -33,14 +34,13 @@ public class BotManager implements Runnable {
                 for (Bot bot : this.bot) {
                     bot.update();
                 }
-                long delay = 150 - (System.currentTimeMillis() - st);
-                if (delay < 10) {
-                    delay = 10;
+                long delay = 300 - (System.currentTimeMillis() - st); // tăng thời gian chờ
+                if (delay < 50) { // đảm bảo delay tối thiểu 50 ms thay vì 10 ms
+                    delay = 50;
                 }
                 Thread.sleep(delay);
             } catch (Exception ignored) {
             }
-
         }
     }
 }

@@ -187,7 +187,7 @@ public class Mob {
     }
 
     public long getTiemNangForPlayer(Player pl, long dame) {
-
+        
         int levelPlayer = Service.gI().getCurrLevel(pl);
         int n = levelPlayer - this.level;
 

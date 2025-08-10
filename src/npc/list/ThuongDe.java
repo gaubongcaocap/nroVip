@@ -24,10 +24,10 @@ public class ThuongDe extends Npc {
 
     @Override
     public void openBaseMenu(Player player) {
-    if (player.nPoint.power < 150_000_000) { 
-        Service.gI().sendThongBao(player, "Sức mạnh của bạn chưa đủ để sử dụng chức năng này (yêu cầu 150 triệu sức mạnh).");
-        return;
-    }
+        // if (player.nPoint.power < 150_000_000) { 
+        //     Service.gI().sendThongBao(player, "Sức mạnh của bạn chưa đủ để sử dụng chức năng này (yêu cầu 150 triệu sức mạnh).");
+        //     return;
+        // }
         if (canOpenNpc(player)) {
             switch (mapId) {
                 case 45 -> {

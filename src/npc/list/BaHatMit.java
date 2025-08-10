@@ -227,11 +227,24 @@ public class BaHatMit extends Npc {
                                 case CombineService.PHA_LE_HOA_TRANG_BI -> {
                                     switch (select) {
                                         case 0 ->
-                                            CombineService.gI().startCombine(player, 100);
+                                            CombineService.gI().startCombine(player, 500);
                                         case 1 ->
-                                            CombineService.gI().startCombine(player, 10);
+                                            CombineService.gI().startCombine(player, 100);
                                         case 2 ->
+                                            CombineService.gI().startCombine(player, 10);
+                                        case 3 ->
+                                            CombineService.gI().startCombine(player, 1);
+                                        case 4 ->
                                             CombineService.gI().startCombine(player);
+                                    }
+                                }
+
+                                case CombineService.EP_SAO_TRANG_BI -> {
+                                    switch (select) {
+                                        case 0 ->
+                                            CombineService.gI().startCombine(player, 7);
+                                        case 1 ->
+                                            CombineService.gI().startCombine(player, 1);
                                     }
                                 }
 
@@ -241,7 +254,6 @@ public class BaHatMit extends Npc {
                                         CombineService.DANH_BONG_SAO_PHA_LE,
                                         CombineService.CUONG_HOA_LO_SAO_PHA_LE,
                                         CombineService.TAO_DA_HEMATITE,
-                                        CombineService.EP_SAO_TRANG_BI,
                                         CombineService.DAP_DO_AO_HOA,
                                         CombineService.PS_HOA_TRANG_BI,
                                         CombineService.TAY_PS_HOA_TRANG_BI,

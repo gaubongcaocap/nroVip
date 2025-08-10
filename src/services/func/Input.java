@@ -325,7 +325,7 @@ public class Input {
                         item.itemOptions.add(new Item.ItemOption(op, pr));
                         InventoryService.gI().addItemBag(player, item);
                         InventoryService.gI().sendItemBag(player);
-                        String thongBao = "Nhận " + item.template.name + "! Từ" + player.name;
+                        String thongBao = "Nhận " + item.template.name + "! Từ " + player.name;
                         Service.gI().sendThongBao(player, thongBao);
 
                         // Ghi thông báo vào file

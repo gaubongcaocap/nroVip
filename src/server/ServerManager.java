@@ -165,19 +165,6 @@ public class ServerManager {
         Thread.startVirtualThread(() -> DecisionMaker.gI());
         Thread.startVirtualThread(() -> DecisionMaker.gI());
 
-        // Khởi tạo bot săn boss, bot pem và bot shop. Có thể điều chỉnh số lượng tùy theo cấu hình.
-        Logger.success("Đang tạo bot săn boss\n");
-        NewBot.gI().runBot(2 , null , 50);
-        Logger.success("Tạo thành công bot săn boss\n");
-
-        Logger.success("Đang tạo bot pem\n");
-        NewBot.gI().runBot(0, null, 3000);
-        Logger.success("Tạo thành công bot pem\n");
-
-        // Logger.success("Đang tạo bot shop\n");
-        // NewBot.gI().runBot(1, null, 100);
-        // Logger.success("Tạo thành công bot shop\n");
-
         EventManager.gI().init();
         Logger.success("Đã khởi tạo sự kiện\n");
 
@@ -198,6 +185,19 @@ public class ServerManager {
             }
         });
 
+        Khởi tạo bot săn boss, bot pem và bot shop. Có thể điều chỉnh số lượng tùy theo cấu hình.
+        Logger.success("Đang tạo bot săn boss\n");
+        NewBot.gI().runBot(2 , null , 50);
+        Logger.success("Tạo thành công bot săn boss\n");
+
+        Logger.success("Đang tạo bot pem\n");
+        NewBot.gI().runBot(0, null, 300);
+        Logger.success("Tạo thành công bot pem\n");
+
+        Logger.success("Đang tạo bot shop\n");
+        NewBot.gI().runBot(1, null, 100);
+        Logger.success("Tạo thành công bot shop\n");
+
         Logger.success("Đã khởi chạy tất cả các thread dịch vụ\n");
     }
 
@@ -213,7 +213,8 @@ public class ServerManager {
                     is.setMessageHandler(Controller.gI())
                             .setSendCollect(new MessageSendCollect() {
                                 @Override
-                                public void doSendMessage(ISession session, DataOutputStream dos, Message msg) throws Exception {
+                                public void doSendMessage(ISession session, DataOutputStream dos, Message msg)
+                                        throws Exception {
                                     try {
                                         byte[] data = msg.getData();
                                         if (session.sentKey()) {
@@ -224,7 +225,9 @@ public class ServerManager {
                                         }
                                         if (data != null) {
                                             int size = data.length;
-                                            if (msg.command == -32 || msg.command == -66 || msg.command == -74 || msg.command == 11 || msg.command == -67 || msg.command == -87 || msg.command == 66) {
+                                            if (msg.command == -32 || msg.command == -66 || msg.command == -74
+                                                    || msg.command == 11 || msg.command == -67 || msg.command == -87
+                                                    || msg.command == 66) {
                                                 byte b2 = this.writeKey(session, (byte) size);
                                                 dos.writeByte(b2 - 128);
                                                 byte b3 = this.writeKey(session, (byte) (size >> 8));
@@ -332,26 +335,28 @@ public class ServerManager {
         });
     }
 
-   // Trong ServerManager.java
+    // Trong ServerManager.java
     // Đảm bảo bạn đã khai báo CLIENTS ở trên:
-    // private static final Map<String, Integer> CLIENTS = new ConcurrentHashMap<>();
+    // private static final Map<String, Integer> CLIENTS = new
+    // ConcurrentHashMap<>();
 
-  // Trong ServerManager.java
+    // Trong ServerManager.java
     // Đảm bảo bạn đã khai báo CLIENTS ở trên:
-    // private static final Map<String, Integer> CLIENTS = new ConcurrentHashMap<>();
+    // private static final Map<String, Integer> CLIENTS = new
+    // ConcurrentHashMap<>();
 
     public void disconnect(String ipAddress) {
         if (ipAddress == null || ipAddress.isEmpty()) {
             return;
         }
         CLIENTS.computeIfPresent(ipAddress, (key, value) -> {
-             // SỬA Ở ĐÂY: Chuyển Integer 'value' thành int trước khi trừ
-             int newValue = value.intValue() - 1;
-             if (newValue <= 0) {
-                  return null; // Xóa entry
-             } else {
-                  return newValue; // Cập nhật giá trị mới
-             }
+            // SỬA Ở ĐÂY: Chuyển Integer 'value' thành int trước khi trừ
+            int newValue = value.intValue() - 1;
+            if (newValue <= 0) {
+                return null; // Xóa entry
+            } else {
+                return newValue; // Cập nhật giá trị mới
+            }
         });
     }
 
@@ -387,18 +392,19 @@ public class ServerManager {
         }
 
         // if (System.getProperty("os.name").toLowerCase().contains("linux")) {
-        //     Thread.startVirtualThread(() -> {
-        //         try {
-        //             String[] command = { "/bin/bash", "-c",
-        //                     "cd ./ && nohup java -server -Xms512M -Xmx1536M -XX:MaxHeapFreeRatio=50 -jar VOZ_3_5.jar </dev/null >nohup.out 2>nohup.err &"
-        //             };
-        //             Process process = new ProcessBuilder(command).start();
-        //             process.waitFor();
-        //             Logger.success("SUCCESSFULLY RUN!\n");
-        //         } catch (Exception e) {
-        //             Logger.error("Lỗi khi chạy lại ứng dụng trên Linux!\n");
-        //         }
-        //     });
+        // Thread.startVirtualThread(() -> {
+        // try {
+        // String[] command = { "/bin/bash", "-c",
+        // "cd ./ && nohup java -server -Xms512M -Xmx1536M -XX:MaxHeapFreeRatio=50 -jar
+        // VOZ_3_5.jar </dev/null >nohup.out 2>nohup.err &"
+        // };
+        // Process process = new ProcessBuilder(command).start();
+        // process.waitFor();
+        // Logger.success("SUCCESSFULLY RUN!\n");
+        // } catch (Exception e) {
+        // Logger.error("Lỗi khi chạy lại ứng dụng trên Linux!\n");
+        // }
+        // });
         // }
 
         System.exit(0);

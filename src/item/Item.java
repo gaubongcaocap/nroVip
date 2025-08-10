@@ -245,6 +245,10 @@ public class Item {
                 || template.id >= 1426 && template.id <= 1434;
     }
 
+    public boolean isNgocRongVIP() {
+        return template != null && template.id >= 1787 && template.id <= 1793 ;
+    }
+
     public boolean isDaPhaLeCu() {
         return template != null && template.id >= 441 && template.id <= 447;
     }
@@ -414,6 +418,21 @@ public class Item {
                 new ItemOption(153, 5);
             case 1434 ->
                 new ItemOption(160, 5);
+
+            case 1787 ->
+                new ItemOption(108, 4);
+            case 1788 ->
+                new ItemOption(94, 4);
+            case 1789 ->
+                new ItemOption(50, 6);
+            case 1790 ->
+                new ItemOption(81, 10);
+            case 1791 ->
+                new ItemOption(80, 10);
+            case 1792 ->
+                new ItemOption(103, 10);
+            case 1793 ->
+                new ItemOption(77, 10);
             default ->
                 itemOptions.get(0);
         };

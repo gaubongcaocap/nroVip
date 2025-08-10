@@ -33,6 +33,8 @@ public class PhaLeHoaTrangBi {
                 0.5f;
             case 8 ->
                 0.18f;
+            case 9 ->
+                0.07f;
             default ->
                 0;
         };
@@ -132,7 +134,7 @@ public class PhaLeHoaTrangBi {
             return;
         }
         CombineService.gI().baHatMit.createOtherMenu(player, ConstNpc.MENU_START_COMBINE, text.toString(),
-                "Nâng cấp\n" + gem + " ngọc\nx100 lần", "Nâng cấp\n" + gem + " ngọc\nx10 lần", "Nâng cấp\n" + gem + " ngọc", "Từ chối");
+                "Nâng cấp\n500 lần","Nâng cấp\n100 lần", "Nâng cấp\n10 lần", "Nâng cấp\n1 lần", "Từ chối");
     }
 
     public static void phaLeHoa(Player player, int... numm) {
@@ -143,10 +145,12 @@ public class PhaLeHoaTrangBi {
         if (!player.combine.itemsCombine.isEmpty()) {
             Item item = player.combine.itemsCombine.get(0);
             if (item == null || !item.isNotNullItem() || item.isHaveOption(93) || !item.canPhaLeHoa()) {
+                Service.gI().sendDialogMessage(player, "Vui lòng chọn vật phẩm có thể pha lê hóa");
                 return;
             }
             int star = item.getOptionParam(107);
             if (star >= CombineService.MAX_STAR_ITEM) {
+                Service.gI().sendDialogMessage(player, "Trang bị đã đạt giới hạn, không thể pha lê hóa");
                 return;
             }
             int gold = getGold(star);
@@ -178,11 +182,12 @@ public class PhaLeHoaTrangBi {
                     break;
                 }
             }
+
             if (success) {
                 item.addOptionParam(107, 1);
-                if (star > 7) {
+                if (star == 9) {
                     String message = "Chúc mừng " + player.name + " vừa pha lê hóa thành công "
-                            + item.template.name + " lên " + (star + 1) + " sao pha lê";
+                            + item.template.name + " lên " + (star + 1) + " sao pha lê. Mọi người đều ngưỡng mộ";
 
                     // Gửi thông báo server
                     ServerNotify.gI().notify(message);
