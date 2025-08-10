@@ -2000,7 +2000,6 @@ public class NPoint {
     }
 
     public long getPowerLimit() {
-        System.out.println(powerLimit);
         if (powerLimit != null) {
             return powerLimit.getPower();
         }
