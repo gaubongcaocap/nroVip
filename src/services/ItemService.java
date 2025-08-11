@@ -883,10 +883,10 @@ public class ItemService {
                 } else if (Util.isTrue(50, 100)) {
                     op1 = 127;
                     op2 = 139;
-                } else if (Util.isTrue(1, 10000)) { // Xác suất cực thấp cho {250, 253}
+                } else if (Util.isTrue(1, 100)) { // Xác suất cực thấp cho {250, 253}
                     op1 = 250;
                     op2 = 253;
-                } else if (Util.isTrue(1, 10000)) { // Xác suất cực thấp cho {129, 141}
+                } else if (Util.isTrue(30, 100)) { // Xác suất cực thấp cho {129, 141}
                     op1 = 129;
                     op2 = 141;
                 } else {
@@ -902,10 +902,10 @@ public class ItemService {
                 } else if (Util.isTrue(50, 100)) {
                     op1 = 131;
                     op2 = 143;
-                } else if (Util.isTrue(1, 10000)) {
+                } else if (Util.isTrue(30, 100)) {
                     op1 = 251;
                     op2 = 254;
-                } else {
+                }  else {
                     op1 = 132;
                     op2 = 144;
                 }

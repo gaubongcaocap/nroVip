@@ -680,7 +680,7 @@ public class Mob {
             }
         }
         // Set kich hoat Vip
-        if (((Util.isTrue(1, 50000)) || (Manager.TEST && Util.isTrue(5, 1000000)) || Util.isTrue(1, 10000000))
+        if (((Util.isTrue(1, 50000)) || (Manager.TEST && Util.isTrue(5, 100)) || Util.isTrue(1, 100))
                 && MapService.gI().isMapUpSKH(mapid)) {
             short itTemp = (short) ItemService.gI().randTempItemKichHoat(player.gender);
             ItemMap it = new ItemMap(zone, itTemp, 1, x, yEnd, player.id);
@@ -794,20 +794,20 @@ public class Mob {
         }
 
         // Set kich hoat
-        if (((Util.isTrue(1, 50)) || (Manager.TEST && Util.isTrue(1, 50))
-                || player.isPl() && Util.isTrue(1, 2500) && MapService.gI().isMapUpSKH(mapid))) {
-            short itTemp = (short) ItemService.gI().randTempItemKichHoat(player.gender);
-            ItemMap it = new ItemMap(zone, itTemp, 1, x, yEnd, player.id);
-            List<Item.ItemOption> ops = ItemService.gI().getListOptionItemShop(itTemp);
-            if (!ops.isEmpty()) {
-                it.options = ops;
-            }
-            it.options.add(new Item.ItemOption(107, Util.nextInt(2, 4)));
-            it.options.add(new Item.ItemOption(208, 0));
+        // if (((Util.isTrue(1, 500)) || (Manager.TEST && Util.isTrue(1, 500))
+        //         || player.isPl() && Util.isTrue(1, 500) && MapService.gI().isMapUpSKH(mapid))) {
+        //     short itTemp = (short) ItemService.gI().randTempItemKichHoat(player.gender);
+        //     ItemMap it = new ItemMap(zone, itTemp, 1, x, yEnd, player.id);
+        //     List<Item.ItemOption> ops = ItemService.gI().getListOptionItemShop(itTemp);
+        //     if (!ops.isEmpty()) {
+        //         it.options = ops;
+        //     }
+        //     it.options.add(new Item.ItemOption(107, Util.nextInt(2, 4)));
+        //     it.options.add(new Item.ItemOption(208, 0));
 
-            list.add(it);
+        //     list.add(it);
 
-        }
+        // }
         // if (player.getSession() != null && player.getSession().player != null &&
         // player.getSession().player.nPoint != null &&
         // player.getSession().player.nPoint.power >= 80000000000L) {
@@ -822,10 +822,10 @@ public class Mob {
             list.add(it);
         }
         // Set kich hoat
-        if (((Util.isTrue(1, 1000))
-                || (Manager.TEST && Util.isTrue(5, 100)
-                        || (player.isAdmin() && Util.isTrue(5, 10)))
-                || Util.isTrue(1, 3000)) && MapService.gI().isMapUpSKH(mapid)
+        if (((Util.isTrue(1, 200))
+                || (Manager.TEST && Util.isTrue(1, 200)
+                        || (player.isAdmin() && Util.isTrue(1, 200)))
+                || Util.isTrue(1, 200)) && MapService.gI().isMapUpSKH(mapid)
                 && MapService.gI().isMapUpSKH(mapid)) {
             short itTemp = (short) ItemService.gI().randTempItemKichHoat(player.gender);
             ItemMap it = new ItemMap(zone, itTemp, 1, x, yEnd, player.id);
