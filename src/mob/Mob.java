@@ -680,8 +680,7 @@ public class Mob {
             }
         }
         // Set kich hoat Vip
-        if (((Util.isTrue(1, 50000)) || (Manager.TEST && Util.isTrue(5, 100)) || Util.isTrue(1, 100))
-                && MapService.gI().isMapUpSKH(mapid)) {
+        if (Util.isTrue(1, 1000) && MapService.gI().isMapUpSKH(mapid)) {
             short itTemp = (short) ItemService.gI().randTempItemKichHoat(player.gender);
             ItemMap it = new ItemMap(zone, itTemp, 1, x, yEnd, player.id);
             List<Item.ItemOption> ops = ItemService.gI().getListOptionItemShop(itTemp);
@@ -822,11 +821,7 @@ public class Mob {
             list.add(it);
         }
         // Set kich hoat
-        if (((Util.isTrue(1, 200))
-                || (Manager.TEST && Util.isTrue(1, 200)
-                        || (player.isAdmin() && Util.isTrue(1, 200)))
-                || Util.isTrue(1, 200)) && MapService.gI().isMapUpSKH(mapid)
-                && MapService.gI().isMapUpSKH(mapid)) {
+        if (Util.isTrue(1, 200)&& MapService.gI().isMapUpSKH(mapid)) {
             short itTemp = (short) ItemService.gI().randTempItemKichHoat(player.gender);
             ItemMap it = new ItemMap(zone, itTemp, 1, x, yEnd, player.id);
             List<Item.ItemOption> ops = ItemService.gI().getListOptionItemShop(itTemp);
