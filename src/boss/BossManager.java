@@ -163,7 +163,7 @@ public class BossManager implements Runnable {
         // this.createBoss(BossID.SUPER_BROLY, 3);
         this.createBoss(BossID.CUMBER);
         this.createBoss(SOI_HEC_QUYN1, 3);
-        this.createBoss(BossID.GOKU_HUYDIET);
+        this.createBoss(BossID.GOKU_HUYDIET,3);
     }
 
     public void createBoss(int bossID, int total) {
