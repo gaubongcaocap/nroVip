@@ -675,6 +675,16 @@ public class EffectSkillService {
         }
     }
 
+    public void setIsBodyChangeGokuHuyDiet(Player player) {
+        player.effectSkill.isBodyChangeTechnique = true;
+        Service.gI().sendThongBao(player, "Bạn đã bị lây Sida");
+        PlayerService.gI().changeAndSendTypePK(player, 5);
+        for (int i = player.zone.getPlayers().size() - 1; i >= 0; i--) {
+            Player pl = player.zone.getPlayers().get(i);
+            Service.gI().playerInfoUpdate(player, pl, player.name + " Sida", 180, 181, 182);
+        }
+    }
+
     public void removeBodyChangeTechnique(Player player) {
         PlayerService.gI().changeAndSendTypePK(player, 0);
         player.effectSkill.isTanHinh = false;

@@ -9,7 +9,6 @@ import consts.ConstTask;
 import consts.cn;
 import item.Item;
 import jdbc.daos.PlayerDAO;
-import models.Combine.CombineService;
 import npc.Npc;
 import player.Player;
 import services.InventoryService;
@@ -124,8 +123,8 @@ public class Bardock extends Npc {
                     case 3:
                         if (player.getSession() != null) {
                             this.createOtherMenu(player, 13000,
-                                    "Đổi đệ bằng điểm săn boss\n"
-                                            + "Bạn đang có :" + player.getSession().cash + " Điểm SB"
+                                    "Đổi đệ bằng điểm Thành Tích\n"
+                                            + "Bạn đang có " + player.event.getKillBossPoint() + " Điểm Thành Tích"
                                     + "\nChỉ số hợp thể đệ hiện tại :\n"
                                     + "HP: " + player.pointfusion.getHpFusion() + "%, KI: " + player.pointfusion.getMpFusion() + "%, Sức Đánh: " + player.pointfusion.getDameFusion() + "%",
                                     "Thông tin\nĐệ tử",
@@ -135,10 +134,11 @@ public class Bardock extends Npc {
                                     cn.petAndroidNm + "\n" + cn.de41 + " Điểm",
                                     cn.petBuuGayNm + "\n" + cn.de42 + " Điểm",
                                     cn.petBerrusNhiNm + "\n" + cn.de43 + " Điểm",
-                                    cn.petBlackNm + "\n" + cn.de44 + " Điểm");
+                                    cn.petBlackNm + "\n" + cn.de44 + " Điểm",
+                                    cn.petBerrusNm + "\n" + cn.de45 + " Điểm"
+                                    );
                         }
                         break;
-
                     case 2:
                         if (player.getSession() != null) {
                             this.createOtherMenu(player, 782,
@@ -183,6 +183,8 @@ public class Bardock extends Npc {
                         break;
                     case 7:
                         ProcessBuyPet(player, cn.de44, select, cn.petBlackNm);
+                    case 8:
+                        ProcessBuyPet(player, cn.de45, select, cn.petBerrusNm);
                         break;
                 }
             } else if (player.iDMark.getIndexMenu() == 888) {
@@ -300,35 +302,44 @@ public class Bardock extends Npc {
             return;
         }
 
-        if (PlayerDAO.subcash(player, point)) {
-            switch (typePet) {
-                case 1:
-                    PetService.gI().createPetBuuNhi(player, player.pet != null, player.gender);
-                    break;
-                case 2:
-                    PetService.gI().createPetFideNhi(player, player.pet != null, player.gender);
-                    break;
-                case 3:
-                    PetService.gI().createPetCellNhi(player, player.pet != null, player.gender);
-                    break;
-                case 4:
-                    PetService.gI().createPetAdrBeach(player, player.pet != null, player.gender);
-                case 5:
-                    PetService.gI().createPetMabuGay(player, player.pet != null, player.gender);
-                    break;
-                case 6:
-                    PetService.gI().createPetBerrusNhi(player, player.pet != null, player.gender);
-                    break;
-                case 7:
-                    PetService.gI().createBlackPet(player, player.pet != null, player.gender);
-                    break;
-                default:
-                    break;
-            }
+        int killPoint = player.event.getKillBossPoint();
 
-            Service.gI().sendThongBao(player, "Mày đã cứu được " + petNm);
-        } else {
-            Service.gI().sendThongBao(player, "Đã có lỗi xảy ra !!");
+        if (point > 0) {
+            if (killPoint >= point) {
+                player.event.subKillBossPoint(point);
+                switch (typePet) {
+                    case 1:
+                        PetService.gI().createPetBuuNhi(player, player.pet != null, player.gender);
+                        break;
+                    case 2:
+                        PetService.gI().createPetFideNhi(player, player.pet != null, player.gender);
+                        break;
+                    case 3:
+                        PetService.gI().createPetCellNhi(player, player.pet != null, player.gender);
+                        break;
+                    case 4:
+                        PetService.gI().createPetAdrBeach(player, player.pet != null, player.gender);
+                    case 5:
+                        PetService.gI().createPetMabuGay(player, player.pet != null, player.gender);
+                        break;
+                    case 6:
+                        PetService.gI().createPetBerrusNhi(player, player.pet != null, player.gender);
+                        break;
+                    case 7:
+                        PetService.gI().createBlackPet(player, player.pet != null, player.gender);
+                        break;
+                    case 8:
+                        PetService.gI().createBeerusPet(player, player.pet != null, player.gender);
+                        break;
+                    default:
+                        break;
+                }
+
+                Service.gI().sendThongBao(player, "Mày đã cứu được " + petNm);
+
+            } else {
+                Service.gI().sendThongBao(player, "Bạn còn thiếu " + (point - killPoint) + " điểm");
+            }
         }
     }
 }

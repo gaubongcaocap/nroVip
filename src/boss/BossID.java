@@ -148,7 +148,7 @@ public class BossID {
 
     //========================TRUNGTHU EVENT========================
     public static final int KHIDOT = -344;
-    public static final int NGUYETTHAN = -345;
+    public static final int NGUYET_THAN = -345;
     public static final int NHATTHAN = -346;
 
     //========================BOSS 21H========================
@@ -198,4 +198,8 @@ public class BossID {
     public static final int O_DO1 = -369;
     public static final int SOI_HEC_QUYN1 = -370;
     public static final int VIRUT = -370;
+
+    public static final int ANDROID_21 = -399;
+    public static final int GOKU_HUYDIET = -400;
+    public static final int CADIC_HUYDIET = -401;
 }

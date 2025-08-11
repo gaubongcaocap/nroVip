@@ -61,6 +61,8 @@ public class Android19 extends Boss {
                 case Skill.KAMEJOKO:
                 case Skill.MASENKO:
                 case Skill.ANTOMIC:
+                case Skill.LIEN_HOAN:
+                case Skill.DE_TRUNG:
                     long hpHoi =  ((long) damage * 80 / 100);
                     PlayerService.gI().hoiPhuc(this, hpHoi, 0);
                     if (Util.isTrue(1, 5)) {

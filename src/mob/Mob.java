@@ -99,7 +99,8 @@ public class Mob {
     }
 
     public void setTiemNang() {
-        this.maxTiemNang = (long) ((long) this.point.getHpFull() * 0.2 * (long) (this.pTiemNang + Util.nextInt(-5, 5)) / 100L);
+        this.maxTiemNang = (long) ((long) this.point.getHpFull() * 0.2 * (long) (this.pTiemNang + Util.nextInt(-5, 5))
+                / 100L);
     }
 
     public boolean isDie() {
@@ -126,7 +127,8 @@ public class Mob {
                 if (this.point.hp == this.point.maxHp && damage >= this.point.hp) {
                     damage = this.point.hp - 1;
                 }
-                if ((this.tempId == ConstMob.MOC_NHAN || this.tempId == ConstMob.BU_NHIN_MA_QUAI) && damage > this.point.maxHp / 10) {
+                if ((this.tempId == ConstMob.MOC_NHAN || this.tempId == ConstMob.BU_NHIN_MA_QUAI)
+                        && damage > this.point.maxHp / 10) {
                     damage = this.point.maxHp / 10;
                 }
             }
@@ -145,11 +147,13 @@ public class Mob {
                     }
                 }
             }
-            if (!dieWhenHpFull && !isBigBoss() && !MapService.gI().isMapPhoBan(this.zone.map.mapId) && this.lvMob > 0 && plAtt != null && plAtt.charms.tdOaiHung < System.currentTimeMillis()) {
+            if (!dieWhenHpFull && !isBigBoss() && !MapService.gI().isMapPhoBan(this.zone.map.mapId) && this.lvMob > 0
+                    && plAtt != null && plAtt.charms.tdOaiHung < System.currentTimeMillis()) {
                 damage = (int) ((this.point.maxHp <= 20000000 ? this.point.maxHp * 10 : 2000000000) * (10.0 / 100));
                 this.mobAttackPlayer(plAtt);
             }
-            if (plAtt != null && plAtt.isBoss && this.tempId > 0 && Util.isTrue(1, 2) && Util.canDoWithTime(lastTimeAttackPlayer, 2500)) {
+            if (plAtt != null && plAtt.isBoss && this.tempId > 0 && Util.isTrue(1, 2)
+                    && Util.canDoWithTime(lastTimeAttackPlayer, 2500)) {
                 this.mobAttackPlayer(plAtt);
                 lastTimeAttackPlayer = System.currentTimeMillis();
             }
@@ -174,7 +178,8 @@ public class Mob {
                     this.zone.isbulon2Alive = false;
                 }
             } else {
-                this.sendMobStillAliveAffterAttacked(damage, plAtt != null ? (plAtt.nPoint != null && plAtt.nPoint.isCrit) : false);
+                this.sendMobStillAliveAffterAttacked(damage,
+                        plAtt != null ? (plAtt.nPoint != null && plAtt.nPoint.isCrit) : false);
             }
             if (plAtt != null) {
                 if (plAtt.isPl() && plAtt.satellite != null && plAtt.satellite.isDefend) {
@@ -187,86 +192,57 @@ public class Mob {
     }
 
     public long getTiemNangForPlayer(Player pl, long dame) {
-        
+        if (pl.zone != null && pl.zone.map.mapId == ConstMap.MAP_LUYEN_TAP) {
+            return 0;
+        }
+
         int levelPlayer = Service.gI().getCurrLevel(pl);
         int n = levelPlayer - this.level;
 
-        // Kiểm tra xem người chơi có đang ở bản đồ "Kho Báu" không
+        // Ở Kho Báu: không tính chênh lệch cấp
         if (pl.zone != null && MapService.gI().isMapBanDoKhoBau(pl.zone.map.mapId)) {
-            n = 0;  // Không tính chênh lệch cấp độ
-            // Áp dụng tỷ lệ x1000 cho tiềm năng nếu đang ở bản đồ Kho Báu
+            n = 0;
         }
 
+        // Nếu người chơi power < 40B: không trừ theo chênh lệch cấp
         if (pl.nPoint != null && pl.nPoint.power < 40_000_000_000L) {
             n = 0;
         }
 
         long pDameHit = dame * 100 / point.getHpFull();
         long tiemNang = pDameHit * maxTiemNang / 50;
-        int multiplier = 1;
 
-        // Kiểm tra và áp dụng các bùa nếu tồn tại
-        if (pl.charms != null) {
-            if (pl.charms.tdTriTue > System.currentTimeMillis()) {
-                multiplier += 1;
-            }
-            if (pl.charms.tdTriTue3 > System.currentTimeMillis()) {
-                multiplier += 1;
-            }
-            if (pl.charms.tdTriTue4 > System.currentTimeMillis()) {
-                multiplier += 1;
-            }
-        }
-
-        // Kiểm tra cờ đặc biệt của người chơi
-        if (pl.cFlag != 0) {
-            if (pl.cFlag == 8) {
-                tiemNang += ((long) tiemNang * 10 / 100);
-            } else {
-                tiemNang += ((long) tiemNang * 5 / 100);
-            }
-        }
-
-        tiemNang *= multiplier;
-
-        if (tiemNang <= 0) {
+        if (tiemNang <= 0)
             tiemNang = 1;
-        }
 
-        // Áp dụng điều chỉnh tiềm năng tùy theo chênh lệch cấp độ (n)
+        // Điều chỉnh theo chênh lệch cấp độ
         if (n >= 0) {
             for (int i = 0; i < n; i++) {
                 long sub = tiemNang * 10 / 100;
-                if (sub <= 0) {
+                if (sub <= 0)
                     sub = 1;
-                }
                 tiemNang -= sub;
             }
         } else {
             for (int i = 0; i < -n; i++) {
                 long add = tiemNang * 10 / 100;
-                if (add <= 0) {
+                if (add <= 0)
                     add = 1;
-                }
                 tiemNang += add;
             }
         }
 
-        if (tiemNang <= 0) {
+        if (tiemNang <= 0)
             tiemNang = 1;
-        }
 
-        // Tính lại tiềm năng với sức mạnh
+        // Chuyển sang pipeline chuẩn: mọi buff/map/event/… tính ở đây
         if (pl.nPoint != null) {
-            tiemNang = (int) pl.nPoint.calSucManhTiemNang(tiemNang);
+            tiemNang = pl.nPoint.calSucManhTiemNang(tiemNang);
         } else {
             return 0;
         }
 
-        if (pl.zone.map.mapId == 122 || pl.zone.map.mapId == 123 || pl.zone.map.mapId == 124) {
-            tiemNang *= 2;
-        }
-
+        // KHÔNG nhân thêm map 122/123/124 ở đây nữa để tránh trùng
         return tiemNang;
     }
 
@@ -285,7 +261,8 @@ public class Mob {
         if (this.isDie() && !Maintenance.isRunning && !isBigBoss()) {
             switch (zone.map.type) {
                 case ConstMap.MAP_DOANH_TRAI:
-                    if (this.tempId == ConstMob.BULON && this.zone.isTUTAlive && Util.canDoWithTime(lastTimeDie, 10000)) {
+                    if (this.tempId == ConstMob.BULON && this.zone.isTUTAlive
+                            && Util.canDoWithTime(lastTimeDie, 10000)) {
                         this.hoiSinh();
                         this.hoiSinhMobPhoBan();
                         if (this.id == 13) {
@@ -343,7 +320,10 @@ public class Mob {
 
     public void attack() {
         Player player = getPlayerCanAttack();
-        if (!isDie() && !effectSkill.isHaveEffectSkill() && tempId != ConstMob.MOC_NHAN && tempId != ConstMob.BU_NHIN_MA_QUAI && tempId != ConstMob.CO_MAY_HUY_DIET && !this.isBigBoss() && (this.lvMob < 1 || MapService.gI().isMapPhoBan(this.zone.map.mapId)) && Util.canDoWithTime(lastTimeAttackPlayer, timeAttack)) {
+        if (!isDie() && !effectSkill.isHaveEffectSkill() && tempId != ConstMob.MOC_NHAN
+                && tempId != ConstMob.BU_NHIN_MA_QUAI && tempId != ConstMob.CO_MAY_HUY_DIET && !this.isBigBoss()
+                && (this.lvMob < 1 || MapService.gI().isMapPhoBan(this.zone.map.mapId))
+                && Util.canDoWithTime(lastTimeAttackPlayer, timeAttack)) {
             if (player != null) {
                 this.mobAttackPlayer(player);
             }
@@ -360,7 +340,9 @@ public class Mob {
         try {
             List<Player> players = this.zone.getNotBosses();
             for (Player pl : players) {
-                if (!pl.isDie() && !pl.isBoss && !pl.isNewPet && (pl.satellite == null || !pl.satellite.isDefend) && (pl.effectSkin == null || !pl.effectSkin.isVoHinh) && (this.tempId > 18 || (this.tempId > 9 && this.type == 4)) || isBigBoss()) {
+                if (!pl.isDie() && !pl.isBoss && !pl.isNewPet && (pl.satellite == null || !pl.satellite.isDefend)
+                        && (pl.effectSkin == null || !pl.effectSkin.isVoHinh)
+                        && (this.tempId > 18 || (this.tempId > 9 && this.type == 4)) || isBigBoss()) {
                     int dis = Util.getDistance(pl, this);
                     if (dis <= distance || isBigBoss()) {
                         plAttack = pl;
@@ -382,7 +364,9 @@ public class Mob {
             int dis = 300;
             if (playersMap != null) {
                 for (Player plAttt : playersMap) {
-                    if (plAttt.isDie() || plAttt.isBoss || (plAttt.satellite != null && plAttt.satellite.isDefend) || (plAttt.effectSkin != null && plAttt.effectSkin.isVoHinh) || !this.temporaryEnemies.contains(plAttt)) {
+                    if (plAttt.isDie() || plAttt.isBoss || (plAttt.satellite != null && plAttt.satellite.isDefend)
+                            || (plAttt.effectSkin != null && plAttt.effectSkin.isVoHinh)
+                            || !this.temporaryEnemies.contains(plAttt)) {
                         continue;
                     }
                     int d = Util.getDistance(plAttt, this);
@@ -404,7 +388,8 @@ public class Mob {
         if (player.charms != null && player.charms.tdDaTrau > System.currentTimeMillis()) {
             dameMob /= 2;
         }
-        if (player.isPet && ((Pet) player).master.charms != null && ((Pet) player).master.charms.tdDeTu > System.currentTimeMillis()) {
+        if (player.isPet && ((Pet) player).master.charms != null
+                && ((Pet) player).master.charms.tdDeTu > System.currentTimeMillis()) {
             dameMob /= 2;
         }
         if (this.lvMob > 0 && !MapService.gI().isMapPhoBan(this.zone.map.mapId)) {
@@ -432,7 +417,7 @@ public class Mob {
             try {
                 msg = new Message(-11);
                 msg.writer().writeByte(this.id);
-                msg.writeLongBySoulmate(Util.maxIntValue(dame), cn.readInt); //dame
+                msg.writeLongBySoulmate(Util.maxIntValue(dame), cn.readInt); // dame
                 player.sendMessage(msg);
                 msg.cleanup();
             } catch (Exception e) {
@@ -446,7 +431,7 @@ public class Mob {
             msg = new Message(-10);
             msg.writer().writeByte(this.id);
             msg.writer().writeInt((int) player.id);
-            msg.writeLongBySoulmate(Util.maxIntValue(player.nPoint.hp), cn.readInt); //hp
+            msg.writeLongBySoulmate(Util.maxIntValue(player.nPoint.hp), cn.readInt); // hp
             Service.gI().sendMessAnotherNotMeInMap(player, msg);
             msg.cleanup();
         } catch (Exception e) {
@@ -466,7 +451,8 @@ public class Mob {
             }
         }
         this.lvMob = this.tempId > 18 && !isBigBoss() ? Util.isTrue(10, 100) ? 1 : 0 : 0;
-        this.point.hp = this.lvMob > 0 ? this.point.maxHp <= 20000000 ? this.point.maxHp * 10 : 2000000000 : this.point.maxHp;
+        this.point.hp = this.lvMob > 0 ? this.point.maxHp <= 20000000 ? this.point.maxHp * 10 : 2000000000
+                : this.point.maxHp;
         return this.lvMob;
     }
 
@@ -554,7 +540,7 @@ public class Mob {
             if (((Pet) player).master.charms.tdThuHut > System.currentTimeMillis()) {
                 for (ItemMap item : items) {
                     ItemMapService.gI().pickItem(((Pet) player).master, item.itemMapId, true);
-                 
+
                 }
             }
         }
@@ -568,7 +554,7 @@ public class Mob {
             if (itemTask != null) {
                 itemReward.add(itemTask);
             }
-            msg.writer().writeByte(itemReward.size()); //sl item roi
+            msg.writer().writeByte(itemReward.size()); // sl item roi
             for (ItemMap itemMap : itemReward) {
                 msg.writer().writeShort(itemMap.itemMapId);// itemmapid
                 msg.writer().writeShort(itemMap.itemTemplate.id); // id item
@@ -619,7 +605,7 @@ public class Mob {
                 list.add(it);
             }
         }
-        
+
         if (EventManager.CHRISTMAS) {
             Player pl = player;
             if (pl.isPet) {
@@ -634,20 +620,20 @@ public class Mob {
                 }
             }
         }
-//        if (mapid == 5 || mapid == 13) {
-//            Player pl = player;
-//            if (pl.isPet) {
-//                pl = ((Pet) pl).master;
-//            }
-//            if (pl.isPet) {
-//                pl = ((Pet) pl).master;
-//            }
-//            if (Util.isTrue(1, 500)) {
-//                if (pl.itemEvent != null && pl.itemEvent.canDropBinhNuoc(100)) {
-//                    list.add(new ItemMap(zone, 456, 1, x, yEnd, pl.id));
-//                }
-//            }
-//        }
+        // if (mapid == 5 || mapid == 13) {
+        // Player pl = player;
+        // if (pl.isPet) {
+        // pl = ((Pet) pl).master;
+        // }
+        // if (pl.isPet) {
+        // pl = ((Pet) pl).master;
+        // }
+        // if (Util.isTrue(1, 500)) {
+        // if (pl.itemEvent != null && pl.itemEvent.canDropBinhNuoc(100)) {
+        // list.add(new ItemMap(zone, 456, 1, x, yEnd, pl.id));
+        // }
+        // }
+        // }
         if (EventManager.INTERNATIONAL_WOMANS_DAY) {
             Player pl = player;
             if (pl.isPet) {
@@ -693,8 +679,9 @@ public class Mob {
                 }
             }
         }
-        //Set kich hoat Vip
-        if (((Util.isTrue(1, 50000)) || (Manager.TEST && Util.isTrue(5, 1000000)) || Util.isTrue(1, 10000000)) && MapService.gI().isMapUpSKH(mapid)) {
+        // Set kich hoat Vip
+        if (((Util.isTrue(1, 50000)) || (Manager.TEST && Util.isTrue(5, 1000000)) || Util.isTrue(1, 10000000))
+                && MapService.gI().isMapUpSKH(mapid)) {
             short itTemp = (short) ItemService.gI().randTempItemKichHoat(player.gender);
             ItemMap it = new ItemMap(zone, itTemp, 1, x, yEnd, player.id);
             List<Item.ItemOption> ops = ItemService.gI().getListOptionItemShop(itTemp);
@@ -709,7 +696,8 @@ public class Mob {
             it.options.add(new Item.ItemOption(opsrand[3], 0));
             it.options.add(new Item.ItemOption(30, 0));
             list.add(it);
-            ChatGlobalService.gI().autoChatGlobal(player, "[ Hệ Thống ] " + player.name + " vừa nhặt được " + it.itemTemplate.name + " Sét Kích Hoạt");
+            ChatGlobalService.gI().autoChatGlobal(player,
+                    "[ Hệ Thống ] " + player.name + " vừa nhặt được " + it.itemTemplate.name + " Sét Kích Hoạt");
         }
         if (Util.isTrue(1, 300)) {
             ItemMap it = new ItemMap(zone, ConstItem.THIT_HEO, 1, x, yEnd, player.id);
@@ -732,7 +720,8 @@ public class Mob {
             list.add(it);
         }
 
-        if (player.itemTime.isUseMayDo && (Util.isTrue(1, 100) || (player.isActive() && Util.isTrue(1, 50))) && this.tempId > 57 && this.tempId < 66) {
+        if (player.itemTime.isUseMayDo && (Util.isTrue(1, 100) || (player.isActive() && Util.isTrue(1, 50)))
+                && this.tempId > 57 && this.tempId < 66) {
             list.add(new ItemMap(zone, 380, 1, x, yEnd, player.id));
         }
         if (player.itemTime.isUseMayDo2 && Util.isTrue(15, 100) && this.tempId > 80 && this.tempId < 81) {
@@ -740,17 +729,18 @@ public class Mob {
         }
 
         if (player.isPl() && TaskService.gI().getIdTask(player) == ConstTask.TASK_8_1) {
-            if (player.gender == 0 && this.tempId == 11 || player.gender == 1 && this.tempId == 12 || player.gender == 2 && this.tempId == 10) {
+            if (player.gender == 0 && this.tempId == 11 || player.gender == 1 && this.tempId == 12
+                    || player.gender == 2 && this.tempId == 10) {
                 list.add(new ItemMap(zone, 20, 1, x, yEnd, player.id));
             }
         }
-        
+
         if (MapService.gI().isMapNguHanhSon(mapid) && this.tempId != 22) {
             if (Util.isTrue(20, 100) || (player.actived() && Util.isTrue(50, 100))) {
                 player.event.addEventPointNHS(1);
             }
 
-            //sự kiện
+            // sự kiện
             if (Util.isTrue(1, 750)) {
                 ItemMap it = new ItemMap(zone, 1743, 1, x, yEnd, player.id);
                 it.options.add(new Item.ItemOption(30, 0));
@@ -788,9 +778,9 @@ public class Mob {
         if (Util.isTrue(1, 100) || Manager.TEST && Util.isTrue(1, 100) || (player.actived() && Util.isTrue(1, 500))) {
             int vang = MapService.gI().isMapNappa(mapid) ? Util.nextInt(5000, 10000)
                     : MapService.gI().isMapTuongLai(mapid) ? Util.nextInt(9000, 15000)
-                    : MapService.gI().isMapCold(mapid) ? Util.nextInt(15000, 20000)
-                    : mapid >= 155 && mapid <= 159 ? Util.nextInt(10000, 15000)
-                            : Util.nextInt(1000, 5000);
+                            : MapService.gI().isMapCold(mapid) ? Util.nextInt(15000, 20000)
+                                    : mapid >= 155 && mapid <= 159 ? Util.nextInt(10000, 15000)
+                                            : Util.nextInt(1000, 5000);
             if (player.nPoint.tlGold > 0) {
                 vang += vang * player.nPoint.tlGold / 100;
             }
@@ -803,8 +793,9 @@ public class Mob {
             }
         }
 
-        //Set kich hoat
-        if (((Util.isTrue(1, 50)) || (Manager.TEST && Util.isTrue(1, 50)) || player.isPl() && Util.isTrue(1, 2500) && MapService.gI().isMapUpSKH(mapid))) {
+        // Set kich hoat
+        if (((Util.isTrue(1, 50)) || (Manager.TEST && Util.isTrue(1, 50))
+                || player.isPl() && Util.isTrue(1, 2500) && MapService.gI().isMapUpSKH(mapid))) {
             short itTemp = (short) ItemService.gI().randTempItemKichHoat(player.gender);
             ItemMap it = new ItemMap(zone, itTemp, 1, x, yEnd, player.id);
             List<Item.ItemOption> ops = ItemService.gI().getListOptionItemShop(itTemp);
@@ -817,23 +808,25 @@ public class Mob {
             list.add(it);
 
         }
-//        if (player.getSession() != null && player.getSession().player != null && player.getSession().player.nPoint != null && player.getSession().player.nPoint.power >= 80000000000L) {
-//            ItemMap it = new ItemMap(zone, 1191, 1, x, yEnd, player.id);
-//            it.options.add(new Item.ItemOption(30, 0));
-//            list.add(it);
-//        }
+        // if (player.getSession() != null && player.getSession().player != null &&
+        // player.getSession().player.nPoint != null &&
+        // player.getSession().player.nPoint.power >= 80000000000L) {
+        // ItemMap it = new ItemMap(zone, 1191, 1, x, yEnd, player.id);
+        // it.options.add(new Item.ItemOption(30, 0));
+        // list.add(it);
+        // }
         if (mapid == 5 && Util.isTrue(1, 100)) {
             ItemMap it = new ItemMap(zone, 456, 1, x, yEnd, player.id);
             it.options.add(new Item.ItemOption(93, 1));
             it.options.add(new Item.ItemOption(30, 1));
             list.add(it);
         }
-        //Set kich hoat
-        if (((Util.isTrue(1, 1000)        )
+        // Set kich hoat
+        if (((Util.isTrue(1, 1000))
                 || (Manager.TEST && Util.isTrue(5, 100)
-                || (player.isAdmin() && Util.isTrue(5, 10)))
+                        || (player.isAdmin() && Util.isTrue(5, 10)))
                 || Util.isTrue(1, 3000)) && MapService.gI().isMapUpSKH(mapid)
-                 && MapService.gI().isMapUpSKH(mapid)) {
+                && MapService.gI().isMapUpSKH(mapid)) {
             short itTemp = (short) ItemService.gI().randTempItemKichHoat(player.gender);
             ItemMap it = new ItemMap(zone, itTemp, 1, x, yEnd, player.id);
             List<Item.ItemOption> ops = ItemService.gI().getListOptionItemShop(itTemp);
@@ -846,42 +839,45 @@ public class Mob {
             it.options.add(new Item.ItemOption(opsrand[1], 0));
             it.options.add(new Item.ItemOption(30, 0));
             list.add(it);
-            //ChatGlobalService.gI().autoChatGlobal(player,  "[ Hệ Thống ] " + player.name + " vừa nhặt được " + it.itemTemplate.name + " Sét Kích Hoạt");
+            // ChatGlobalService.gI().autoChatGlobal(player, "[ Hệ Thống ] " + player.name +
+            // " vừa nhặt được " + it.itemTemplate.name + " Sét Kích Hoạt");
         }
-//        if ((Util.isTrue(1, 1000) && MapService.gI().isMapUpDoSao(mapid))) {
-//            short itTemp1 = (short) ItemService.gI().randTempItemDoSao();
-//            ItemMap it = new ItemMap(zone, itTemp1, 1, x, yEnd, player.id);
-//            List<Item.ItemOption> ops = ItemService.gI().getListOptionItemShop(itTemp1);
-//            if (!ops.isEmpty()) {
-//                it.options = ops;
-//            }
-//            it.options.add(new Item.ItemOption(107, Util.nextInt(1, 3)));
-//            if (Util.isTrue(20, 100)) {
-//                int randomOption = Util.nextInt(34, 35);
-//                it.options.add(new Item.ItemOption(randomOption, 0));
-//            }
-//        }
+        // if ((Util.isTrue(1, 1000) && MapService.gI().isMapUpDoSao(mapid))) {
+        // short itTemp1 = (short) ItemService.gI().randTempItemDoSao();
+        // ItemMap it = new ItemMap(zone, itTemp1, 1, x, yEnd, player.id);
+        // List<Item.ItemOption> ops = ItemService.gI().getListOptionItemShop(itTemp1);
+        // if (!ops.isEmpty()) {
+        // it.options = ops;
+        // }
+        // it.options.add(new Item.ItemOption(107, Util.nextInt(1, 3)));
+        // if (Util.isTrue(20, 100)) {
+        // int randomOption = Util.nextInt(34, 35);
+        // it.options.add(new Item.ItemOption(randomOption, 0));
+        // }
+        // }
         if (player.inventory.haveOption(player.inventory.itemsBody, 5, 106) && Util.isTrue(1, 2000)) {
             ItemMap it = new ItemMap(zone, 1207, 1, x, yEnd, player.id);
             it.options.add(new Item.ItemOption(30, 0));
             list.add(it);
         }
 
-        //Sao pha le
-        if (Util.isTrue(1, 200) || (player.nPoint.isDoSPL && Util.isTrue(5, 100)) || (player.isActive() && Util.isTrue(1, 100))) {
+        // Sao pha le
+        if (Util.isTrue(1, 200) || (player.nPoint.isDoSPL && Util.isTrue(5, 100))
+                || (player.isActive() && Util.isTrue(1, 100))) {
             int rand = Util.nextInt(0, 6);
             ItemMap it = new ItemMap(zone, 441 + rand, 1, x, yEnd, player.id);
             it.options.add(new Item.ItemOption(95 + rand, (rand == 3 || rand == 4) ? 3 : 5));
             list.add(it);
         }
 
-        //Da nang cap
-        if (Util.isTrue(1, 200) || (Util.isTrue(5, 300) && MapService.gI().isMapTuongLai(mapid)) || (player.isActive() && Util.isTrue(5, 300))) {
+        // Da nang cap
+        if (Util.isTrue(1, 200) || (Util.isTrue(5, 300) && MapService.gI().isMapTuongLai(mapid))
+                || (player.isActive() && Util.isTrue(5, 300))) {
             int rand = Util.nextInt(0, 4);
             ItemMap it = new ItemMap(zone, 220 + rand, 1, x, yEnd, player.id);
             it.options.add(new Item.ItemOption(71 - rand, 0));
             list.add(it);
-         
+
         }
         if (MapService.gI().isMapCold(mapid)) {
             if (player.isPet) {
@@ -890,52 +886,65 @@ public class Mob {
             if (player.isPet) {
                 player = ((Pet) player).master;
             }
-            if (Util.isTrue(1, 20000) || (player.isActive() && Util.isTrue(1, 200000)) || (player.isAdmin() && Util.isTrue(10, 50))) {
+            if (Util.isTrue(1, 20000) || (player.isActive() && Util.isTrue(1, 200000))
+                    || (player.isAdmin() && Util.isTrue(10, 50))) {
                 ItemMap it = ItemService.gI().randDoTL(this.zone, 1, x, yEnd, player.id);
                 list.add(it);
-               
-               ChatGlobalService.gI().autoChatGlobal(player, "[ Hệ Thống ] " + player.name + " vừa nhặt được " + it.itemTemplate.name + " tại " + this.zone.map.mapName + " khu " + this.zone.zoneId);
+
+                ChatGlobalService.gI().autoChatGlobal(player, "[ Hệ Thống ] " + player.name + " vừa nhặt được "
+                        + it.itemTemplate.name + " tại " + this.zone.map.mapName + " khu " + this.zone.zoneId);
             }
-            if ((Util.isTrue(1, 500) || (player.isActive() && Util.isTrue(2, 100))) && InventoryService.gI().fullSetThan(player)) {
+            if ((Util.isTrue(1, 500) || (player.isActive() && Util.isTrue(2, 100)))
+                    && InventoryService.gI().fullSetThan(player)) {
                 ItemMap it = new ItemMap(zone, Util.nextInt(663, 667), 1, x, yEnd, player.id);
                 it.options.add(new Item.ItemOption(73, 0));
                 it.options.add(new Item.ItemOption(30, 0));
                 list.add(it);
-               
+
             }
         }
-//        // Kiểm tra xem bản đồ có phải là "Map Tương Lai"
-//        if (MapService.gI().isMapTuongLai(mapid) && (Util.isTrue(1, 200000) || Util.isTrue(1, 10000))) {
-//            // Nhặt item Lưỡng Long ngẫu nhiên
-//            ItemMap it = ItemService.gI().randDoLuongLong(this.zone, 1, x, yEnd, player.id);
-//            list.add(it);
-//
-//            // Thông báo cho server
-//            ChatGlobalService.gI().sendThongBaoTheGioi(player, "[ Hệ Thống ] " + player.name + " vừa nhặt được " + it.itemTemplate.name + " tại " + this.zone.map.mapName + " khu " + this.zone.zoneId);
-//        }
-//
-//        // Kiểm tra xem bản đồ có phải là "Map Nappa"
-//        if (MapService.gI().isMapNappa(mapid) && (Util.isTrue(1, 200000) || Util.isTrue(1, 10000))) {
-//            // Nhặt item Kaio ngẫu nhiên
-//            ItemMap it = ItemService.gI().randDoKaio(this.zone, 1, x, yEnd, player.id);
-//            list.add(it);
-//            updateTaskDopDo(player);
-//            // Thông báo cho server
-//            ChatGlobalService.gI().sendThongBaoTheGioi(player, "[ Hệ Thống ] " + player.name + " vừa nhặt được " + it.itemTemplate.name + " tại " + this.zone.map.mapName + " khu " + this.zone.zoneId);
-//        }
+        // // Kiểm tra xem bản đồ có phải là "Map Tương Lai"
+        // if (MapService.gI().isMapTuongLai(mapid) && (Util.isTrue(1, 200000) ||
+        // Util.isTrue(1, 10000))) {
+        // // Nhặt item Lưỡng Long ngẫu nhiên
+        // ItemMap it = ItemService.gI().randDoLuongLong(this.zone, 1, x, yEnd,
+        // player.id);
+        // list.add(it);
+        //
+        // // Thông báo cho server
+        // ChatGlobalService.gI().sendThongBaoTheGioi(player, "[ Hệ Thống ] " +
+        // player.name + " vừa nhặt được " + it.itemTemplate.name + " tại " +
+        // this.zone.map.mapName + " khu " + this.zone.zoneId);
+        // }
+        //
+        // // Kiểm tra xem bản đồ có phải là "Map Nappa"
+        // if (MapService.gI().isMapNappa(mapid) && (Util.isTrue(1, 200000) ||
+        // Util.isTrue(1, 10000))) {
+        // // Nhặt item Kaio ngẫu nhiên
+        // ItemMap it = ItemService.gI().randDoKaio(this.zone, 1, x, yEnd, player.id);
+        // list.add(it);
+        // updateTaskDopDo(player);
+        // // Thông báo cho server
+        // ChatGlobalService.gI().sendThongBaoTheGioi(player, "[ Hệ Thống ] " +
+        // player.name + " vừa nhặt được " + it.itemTemplate.name + " tại " +
+        // this.zone.map.mapName + " khu " + this.zone.zoneId);
+        // }
 
-//        if (MapService.gI().isMapTuongLai(mapid) && ((Util.isTrue(1, 1000) || (player.isActive() && Util.isTrue(1, 1500)))) && InventoryService.gI().fullSetThan(player)) {
-//            ItemMap it = new ItemMap(zone, Util.nextInt(663, 667), 1, x, yEnd, player.id);
-//            it.options.add(new Item.ItemOption(73, 0));
-//            list.add(it);updateTaskDopDo(player);
-//        }
-        //Item nro , rác
+        // if (MapService.gI().isMapTuongLai(mapid) && ((Util.isTrue(1, 1000) ||
+        // (player.isActive() && Util.isTrue(1, 1500)))) &&
+        // InventoryService.gI().fullSetThan(player)) {
+        // ItemMap it = new ItemMap(zone, Util.nextInt(663, 667), 1, x, yEnd,
+        // player.id);
+        // it.options.add(new Item.ItemOption(73, 0));
+        // list.add(it);updateTaskDopDo(player);
+        // }
+        // Item nro , rác
         if (Util.isTrue(1, 100) || (player.isActive() && Util.isTrue(1, 100))) {
             list.add(new ItemMap(zone, 225, 1, x, yEnd, player.id));
         }
-//        if (Util.isTrue(1, 100) || (player.isActive() && Util.isTrue(1, 200))) {
-//            list.add(new ItemMap(zone, 533, 1, x, yEnd, player.id));
-//        }
+        // if (Util.isTrue(1, 100) || (player.isActive() && Util.isTrue(1, 200))) {
+        // list.add(new ItemMap(zone, 533, 1, x, yEnd, player.id));
+        // }
         if (Util.isTrue(1, 10000) || player.isActive() && Util.isTrue(1, 5000)) {
             list.add(new ItemMap(zone, 18, 1, x, yEnd, player.id));
         }
@@ -945,42 +954,43 @@ public class Mob {
         if (Util.isTrue(1, 10000) || player.isActive() && Util.isTrue(1, 500)) {
             list.add(new ItemMap(zone, 20, 1, x, yEnd, player.id));
         }
-        //Úp quái rơi ngọc
+        // Úp quái rơi ngọc
         if (Util.isTrue(1, 1000) || player.isActive() && Util.isTrue(1, 20)) {
             list.add(new ItemMap(zone, 77, 1000, x, yEnd, player.id));
         }
         if (Util.isTrue(1, 1000000) || (player.isActive() && Util.isTrue(1, 100000))) {
             list.add(new ItemMap(zone, 861, 1, x, yEnd, player.id));
         }
-        //Úp quái bí ngô 1 - 7 sao
-       if (Util.isTrue(1, 10000) || (player.isActive() && Util.isTrue(1, 15000))) {
-           list.add(new ItemMap(zone, 702, 1, x, yEnd, player.id));
-       }
-       if (Util.isTrue(1, 10000) || (player.isActive() && Util.isTrue(1, 13000))) {
-           list.add(new ItemMap(zone, 703, 1, x, yEnd, player.id));
-       }
-       if (Util.isTrue(1, 10000) || (player.isActive() && Util.isTrue(1, 13000))) {
-           list.add(new ItemMap(zone, 704, 1, x, yEnd, player.id));
-       }
-       if (Util.isTrue(1, 10000) || (player.isActive() && Util.isTrue(1, 13000))) {
-           list.add(new ItemMap(zone, 705, 1, x, yEnd, player.id));
-       }
-       if (Util.isTrue(1, 10000) || (player.isActive() && Util.isTrue(1, 12000))) {
-           list.add(new ItemMap(zone, 706, 1, x, yEnd, player.id));
-       }
-       if (Util.isTrue(1, 10000) || (player.isActive() && Util.isTrue(1, 11000))) {
-           list.add(new ItemMap(zone, 707, 1, x, yEnd, player.id));
-       }
-       if (Util.isTrue(1, 10000) || (player.isActive() && Util.isTrue(1, 11000))) {
-           list.add(new ItemMap(zone, 708, 1, x, yEnd, player.id));
-       }
+        // Úp quái bí ngô 1 - 7 sao
+        if (Util.isTrue(1, 10000) || (player.isActive() && Util.isTrue(1, 15000))) {
+            list.add(new ItemMap(zone, 702, 1, x, yEnd, player.id));
+        }
+        if (Util.isTrue(1, 10000) || (player.isActive() && Util.isTrue(1, 13000))) {
+            list.add(new ItemMap(zone, 703, 1, x, yEnd, player.id));
+        }
+        if (Util.isTrue(1, 10000) || (player.isActive() && Util.isTrue(1, 13000))) {
+            list.add(new ItemMap(zone, 704, 1, x, yEnd, player.id));
+        }
+        if (Util.isTrue(1, 10000) || (player.isActive() && Util.isTrue(1, 13000))) {
+            list.add(new ItemMap(zone, 705, 1, x, yEnd, player.id));
+        }
+        if (Util.isTrue(1, 10000) || (player.isActive() && Util.isTrue(1, 12000))) {
+            list.add(new ItemMap(zone, 706, 1, x, yEnd, player.id));
+        }
+        if (Util.isTrue(1, 10000) || (player.isActive() && Util.isTrue(1, 11000))) {
+            list.add(new ItemMap(zone, 707, 1, x, yEnd, player.id));
+        }
+        if (Util.isTrue(1, 10000) || (player.isActive() && Util.isTrue(1, 11000))) {
+            list.add(new ItemMap(zone, 708, 1, x, yEnd, player.id));
+        }
         // Manh thien su
-        if ((Util.isTrue(1, 1000) || (player.isActive() && Util.isTrue(10, 300))) && MapService.gI().isMapHanhTinhThucVat(mapid) && InventoryService.gI().findItemNTK(player)) {
+        if ((Util.isTrue(1, 1000) || (player.isActive() && Util.isTrue(10, 300)))
+                && MapService.gI().isMapHanhTinhThucVat(mapid) && InventoryService.gI().findItemNTK(player)) {
             list.add(new ItemMap(zone, Util.nextInt(1066, 1070), 1, x, yEnd, player.id));
         }
-//        if (Util.isTrue(1, 5000) || (player.isActive() && Util.isTrue(1, 1000))) {
-//            list.add(new ItemMap(zone, 861, 1, x, yEnd, player.id));
-//        }
+        // if (Util.isTrue(1, 5000) || (player.isActive() && Util.isTrue(1, 1000))) {
+        // list.add(new ItemMap(zone, 861, 1, x, yEnd, player.id));
+        // }
         return list;
     }
 
@@ -1001,7 +1011,8 @@ public class Mob {
                     if (Util.isTrue(1, 3)) {
                         itemMap = new ItemMap(zone, 20, 1, location.x, location.y, player.id);
                     } else {
-                        Service.gI().sendThongBao(player, "Con thằn lằn mẹ này không giữ ngọc, hãy tìm con thằn lằn mẹ khác");
+                        Service.gI().sendThongBao(player,
+                                "Con thằn lằn mẹ này không giữ ngọc, hãy tìm con thằn lằn mẹ khác");
                     }
                 }
             case ConstMob.OC_MUON_HON:
@@ -1009,7 +1020,8 @@ public class Mob {
                     if (Util.isTrue(1, 3)) {
                         itemMap = new ItemMap(zone, 85, 1, location.x, location.y, player.id);
                     } else {
-                        Service.gI().sendThongBao(player, "Con ốc mượn hồn này không giữ truyện tranh, hãy thử tìm con ốc mượn hồn khác");
+                        Service.gI().sendThongBao(player,
+                                "Con ốc mượn hồn này không giữ truyện tranh, hãy thử tìm con ốc mượn hồn khác");
                     }
                 }
             case ConstMob.HEO_XAYDA_ME:
@@ -1017,7 +1029,8 @@ public class Mob {
                     if (Util.isTrue(1, 3)) {
                         itemMap = new ItemMap(zone, 85, 1, location.x, location.y, player.id);
                     } else {
-                        Service.gI().sendThongBao(player, "Con heo xayda mẹ này không giữ truyện tranh, hãy thử tìm con heo xayda mẹ khác");
+                        Service.gI().sendThongBao(player,
+                                "Con heo xayda mẹ này không giữ truyện tranh, hãy thử tìm con heo xayda mẹ khác");
                     }
                 }
             case ConstMob.OC_SEN:
@@ -1025,7 +1038,8 @@ public class Mob {
                     if (Util.isTrue(1, 3)) {
                         itemMap = new ItemMap(zone, 85, 1, location.x, location.y, player.id);
                     } else {
-                        Service.gI().sendThongBao(player, "Con ốc xên này không giữ truyện tranh, hãy thử tìm con ốc xên khác");
+                        Service.gI().sendThongBao(player,
+                                "Con ốc xên này không giữ truyện tranh, hãy thử tìm con ốc xên khác");
                     }
                 }
         }
@@ -1058,7 +1072,7 @@ public class Mob {
             msg = new Message(-13);
             msg.writer().writeByte(this.id);
             msg.writer().writeByte(this.tempId);
-            msg.writer().writeByte(this.lvMob); //level mob
+            msg.writer().writeByte(this.lvMob); // level mob
             msg.writeLongBySoulmate(Util.maxIntValue(this.point.hp), cn.readInt);
             Service.gI().sendMessAllPlayerInMap(this.zone, msg);
             msg.cleanup();
@@ -1074,7 +1088,7 @@ public class Mob {
             msg = new Message(-13);
             msg.writer().writeByte(this.id);
             msg.writer().writeByte(this.tempId);
-            msg.writer().writeByte(this.lvMob); //level mob
+            msg.writer().writeByte(this.lvMob); // level mob
             msg.writeLongBySoulmate(Util.maxIntValue(this.point.hp), cn.readInt);
             Service.gI().sendMessAllPlayerInMap(this.zone, msg);
             msg.cleanup();

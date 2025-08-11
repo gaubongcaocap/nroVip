@@ -27,7 +27,7 @@ import utils.Util;
 public class SuperBroly extends Boss {
 
     public SuperBroly() throws Exception {
-        super(BROLY, BossID.SUPER_BROLY, false, true, BossesData.SUPPER);
+        super(BROLY, BossID.SUPER_BROLY, false, true, BossesData.SUPER_BROLY);
     }
 
     public SuperBroly(Zone zone, int x, int y) throws Exception {

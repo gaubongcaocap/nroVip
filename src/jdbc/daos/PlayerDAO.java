@@ -1007,7 +1007,7 @@ public class PlayerDAO {
                         + "nhanthoivang = ?, ruonggo = ?, sieuthanthuy = ?, vodaisinhtu = ?, rongxuong = ?, data_item_event = ?, data_luyentap = ?, data_clan_task = ?, data_vip = ?, "
                         + "rank = ?, data_super_rank = ?, data_achievement = ?, giftcode = ?, firstTimeLogin = ?, dataBadges = ?, dataTaskBadges = ?, dailyGift = ?, "
                         + "event_point = ?, event_point_boss = ?, event_point_nhs = ?, event_point_quai = ?, diem_quy_lao = ?, "
-                        + "hp_point_fusion = ?, mp_point_fusion = ?, dame_point_fusion = ?, BoughtSkill = ?, LearnSkill = ?, data_dua = ? where id = ?";
+                        + "hp_point_fusion = ?, mp_point_fusion = ?, dame_point_fusion = ?, BoughtSkill = ?, LearnSkill = ?, data_dua = ?, kill_boss_point = ? where id = ?";
 
                 DBConnecter.executeUpdate(query,
                         player.head,
@@ -1071,6 +1071,7 @@ public class PlayerDAO {
                         BoughtSkill,
                         LearnSkill,
                         timedua,
+                        player.event.getKillBossPoint(),
                         //                        player.nPoint.power,
                         player.id);
                 if (player.isOffline) {

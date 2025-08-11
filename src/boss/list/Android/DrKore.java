@@ -79,6 +79,8 @@ public class DrKore extends Boss {
                 case Skill.KAMEJOKO:
                 case Skill.MASENKO:
                 case Skill.ANTOMIC:
+                case Skill.LIEN_HOAN:
+                case Skill.DE_TRUNG:
                     PlayerService.gI().hoiPhuc(this, damage, 0);
                     if (Util.isTrue(1, 5)) {
                         this.chat("Hấp thụ.. các ngươi nghĩ sao vậy?");

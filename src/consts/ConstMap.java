@@ -27,4 +27,5 @@ public class ConstMap {
     public static final int CHANGE_BLACK_BALL = 501;
     public static final int CHANGE_MAP_MA_BU = 502;
 
+    public static final int MAP_LUYEN_TAP = 164;
 }

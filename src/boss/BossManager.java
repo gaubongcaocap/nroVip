@@ -160,9 +160,10 @@ public class BossManager implements Runnable {
         this.createBoss(BossID.AN_TROM);
         this.createBoss(BossID.AN_TROM_TV);
         this.createBoss(BossID.BROLY, 50);
-//        this.createBoss(BossID.SUPER_BROLY, 3);
+        // this.createBoss(BossID.SUPER_BROLY, 3);
         this.createBoss(BossID.CUMBER);
         this.createBoss(SOI_HEC_QUYN1, 3);
+        this.createBoss(BossID.GOKU_HUYDIET);
     }
 
     public void createBoss(int bossID, int total) {
@@ -320,12 +321,12 @@ public class BossManager implements Runnable {
                     new AnTromTV();
                 case BossID.KHIDOT ->
                     new KhiDot();
-                case BossID.NGUYETTHAN ->
+                case BossID.NGUYET_THAN ->
                     new NguyetThan();
                 case BossID.NHATTHAN ->
                     new NhatThan();
                 // case BossID.GOLDEN_FRIEZA ->
-                //     new GoldenFrieza();
+                    // new GoldenFrieza();
                 case BossID.DEATH_BEAM_1 ->
                     new DeathBeam1();
                 case BossID.DEATH_BEAM_2 ->
@@ -356,6 +357,10 @@ public class BossManager implements Runnable {
                     new Cumber();
                 case BossID.SOI_HEC_QUYN1 ->
                     new SoiHecQuyn();
+                case BossID.GOKU_HUYDIET ->
+                    new boss.list.GokuVegeta.Goku();
+                case BossID.CADIC_HUYDIET ->
+                    new boss.list.GokuVegeta.Cadic();
                 default ->
                     null;
             };

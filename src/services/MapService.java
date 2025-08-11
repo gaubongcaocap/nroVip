@@ -468,6 +468,10 @@ public boolean isAllMap(int mapId) {
     public boolean isMapMaBu(int mapId) {
         return mapId >= 114 && mapId <= 120;
     }
+    
+    public boolean isMapLuyenTap2(int mapId) {
+        return mapId == ConstMap.MAP_LUYEN_TAP;
+    }
 
     public boolean isHome(int mapId) {
         return mapId >= 21 && mapId <= 23;

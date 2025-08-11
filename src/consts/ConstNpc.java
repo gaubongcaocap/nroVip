@@ -49,8 +49,8 @@ public class ConstNpc {
         public static final String HUONG_DAN_DOI_DETU_VIP = "Ta đang giam giữ rất nhiều đứa trẻ\n"
                         + "Để cứu được tụi nó thì ngươi cần phải tham gia vào các trận chiến khốc liệt\n"
                         + "Chỉ cần tiêu diệt bất kì một BOSS nào đó\n"
-                        + "Thì ngươi sẽ nhận được ngẫu nhiên 1 đến 3 điểm SB\n"
-                        + "Sử dụng điểm SB để cứu lấy những đứa trẻ đó từ ta. Ha Ha Ha...\n"
+                        + "Thì ngươi sẽ nhận được ngẫu nhiên 1 đến 5 điểm Thành Tích\n"
+                        + "Sử dụng điểm Thành Tích để cứu lấy những đứa trẻ đó từ ta. Ha Ha Ha...\n"
                         + "Chỉ số đệ tử cũng sẽ khác nhau, càng nhiều điểm thì phần thưởng càng xứng đáng\n"
                         + "MaBư Nhí tăng ngẫu nhiên từ 1 đến 5% chỉ số khi hợp thể\n"
                         + "Fide Nhí tăng ngẫu nhiên từ 5 đến 10% chỉ số khi hợp thể\n"
@@ -58,7 +58,9 @@ public class ConstNpc {
                         + "Android Nhí tăng ngẫu nhiên từ 15 đến 20% chỉ số khi hợp thể\n"
                         + "Bư Gầy tăng ngẫu nhiên từ 20 đến 25% chỉ số khi hợp thể\n"
                         + "Berrus Nhí tăng ngẫu nhiên từ 25 đến 30% chỉ số khi hợp thể\n"
-                        + "Black Goku tăng ngẫu nhiên từ 30 đến 40% chỉ số khi hợp thể";
+                        + "Black Goku tăng ngẫu nhiên từ 30 đến 35% chỉ số khi hợp thể"
+                        + "Berrus Hủy diệt tăng ngẫu nhiên từ 35 đến 45% chỉ số khi hợp thể"
+                        ;
 
         public static final String NPC_DHVT23 = "Đại hội quy tụ nhiều cao thủ như là Jacky Chun, Thiên Xin Hăng, Tàu Bảy Bảy... Phần thường là 1 rương gỗ chưa nhiều vật phẩm giá trị.\bKhi hạ được 1 đối thủ, phần thưởng sẽ nâng lên 1 cấp.\bRương càng cao cấp, vật phẩm trong đó càng giá trị hơn.\n"
                         + "Mỗi ngày bạn chỉ được nhận 1 phần thưởng.\bBạn hãy cố gắng hết sức mình\bđể nhận phần thưởng xứng đáng nhất nhé";

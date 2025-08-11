@@ -261,6 +261,7 @@ public class PDTSqlFetcher {
             }
             player.event.setEventPoint(rs.getInt("event_point"));
             player.event.setEventPointBHM(rs.getInt("event_point_boss"));
+            player.event.setKillBossPoint(rs.getInt("kill_boss_point"));
             player.event.setEventPointNHS(rs.getInt("event_point_nhs"));
             player.event.setEventPointQuai(rs.getInt("event_point_quai"));
             player.event.setEventPointQuyLao(rs.getInt("diem_quy_lao"));

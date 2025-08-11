@@ -1328,7 +1328,7 @@ public class Player implements Runnable {
             if (plAtt != null && !plAtt.equals(this)) {
                 setTemporaryEnemies(plAtt);
             }
-            if (this.isBattu) {
+            if (this.isBattu || MapService.gI().isMapLuyenTap2(this.zone.map.mapId)) {
                 return 0;
             }
 //            if (plAtt != null && this.isPet && ((Pet) this).master.id == plAtt.id) {

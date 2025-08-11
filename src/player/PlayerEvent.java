@@ -1,4 +1,7 @@
 package player;
+
+import utils.Util;
+
 /**
  * @build by SOULMATE
  */
@@ -53,6 +56,14 @@ public class PlayerEvent {
 
     public void setEventPointBHM(int eventPointBHM) {
         this.eventPointBHM = eventPointBHM;
+    }
+
+    public int getKillBossPoint() {
+        return killBossPoint;
+    }
+
+    public void setKillBossPoint(int killBossPoint) {
+        this.killBossPoint = killBossPoint;
     }
 
     public int getEventPointNHS() {
@@ -139,6 +150,7 @@ public class PlayerEvent {
     private int mocNapDaNhan;
     private int eventPoint;
     private int eventPointBHM;
+    private int killBossPoint;
     private int eventPointNHS;
     private int eventPointQuai;
     private int eventPointQuyLao;
@@ -154,6 +166,13 @@ public class PlayerEvent {
         this.player = player;
     }
 
+    public void addKillBossPoint(int num) {
+        killBossPoint += num;
+    }
+
+    public void subKillBossPoint(int num) {
+        killBossPoint -= num;
+    }
 
     public void addEventPoint(int num) {
         eventPoint += num;

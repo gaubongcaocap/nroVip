@@ -968,7 +968,7 @@ public class NPoint {
                         || ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2)) {
             hpMax += (hpMax * 25 / 100L);
         }
-        
+
         if (this.player.pet != null && this.player.fusion.typeFusion != ConstPlayer.NON_FUSION) {
             if (this.player.pet.typePet >= 5) {
                 hpMax += this.player.pet.nPoint.hpMax * this.player.getPointfusion().getHpFusion() / 100L;
@@ -1820,95 +1820,87 @@ public class NPoint {
             return 0; // map cấm TN
         if (this.power >= getPowerLimit())
             return 0;
-        
+
         final long now = System.currentTimeMillis();
-        long base = tiemNang;
+        final long base = tiemNang;
         long percentTotal = 0;
 
-        // 1) % từ tlTNSM
+        // (1) % từ tlTNSM
         if (this.tlTNSM != null) {
-            for (Integer tl : this.tlTNSM) {
+            for (Integer tl : this.tlTNSM)
                 if (tl != null)
                     percentTotal += tl;
-            }
         }
 
-        // 2) cFlag: 8 = +10%, còn lại +5% (gom về đây)
-        if (this.player.cFlag != 0) {
+        // (2) cFlag: 8 = +10%, còn lại +5%
+        if (this.player.cFlag != 0)
             percentTotal += (this.player.cFlag == 8 ? 10 : 5);
-        }
 
-        // 3) Nội tại id 24
-        if (this.intrinsic != null && this.intrinsic.id == 24) {
+        // (3) Nội tại id 24
+        if (this.intrinsic != null && this.intrinsic.id == 24)
             percentTotal += this.intrinsic.param1;
-        }
 
-        // 4) Hiệu ứng Chibi type 2: ~ +200%
+        // (4) Hiệu ứng Chibi type 2: +200%
         if (this.player.effectSkill != null && this.player.effectSkill.isChibi && this.player.typeChibi == 2) {
             percentTotal += 200;
         }
 
-        // 5) Set đồ
+        // (5) Set đồ
         if (this.player.setClothes != null) {
             if (this.player.setClothes.thouhangnga == 1)
-                percentTotal += 30; // +30%
+                percentTotal += 30;
             if (this.player.setClothes.HoatiemthuongPhonghoaluan == 1)
-                percentTotal += 30; // +30%
+                percentTotal += 30;
         }
 
-        // 6) VIP theo session (player hoặc master của pet) ~ +300%
-        boolean hasVipSession = (this.player.getSession() != null && this.player.getSession().vip > 0)
-                || (this.player.isPet
-                        && ((Pet) this.player).master != null
-                        && ((Pet) this.player).master.getSession() != null
-                        && ((Pet) this.player).master.getSession().vip > 0);
-        if (hasVipSession) {
+        // (6) VIP theo session (player hoặc master của pet): +300%
+        boolean hasVipSession = (this.player.getSession() != null && this.player.getSession().vip > 0) ||
+                (this.player.isPet &&
+                        ((Pet) this.player).master != null &&
+                        ((Pet) this.player).master.getSession() != null &&
+                        ((Pet) this.player).master.getSession().vip > 0);
+        if (hasVipSession)
             percentTotal += 300;
-        }
 
-        // 7) Item time
+        // (7) Item time
         if (this.player.itemTime != null) {
             if (this.player.itemTime.isUseDK)
-                percentTotal += 200; // x3 tổng
+                percentTotal += 200;
             if (this.player.itemTime.isUseKhauTrang)
-                percentTotal += 5; // +5%
+                percentTotal += 5;
             if (this.player.itemTime.isUseLoX2)
-                percentTotal += 200; // +200%
+                percentTotal += 200;
             if (this.player.itemTime.isUseLoX5)
-                percentTotal += 500; // +500%
+                percentTotal += 500;
             if (this.player.itemTime.isUseLoX7)
-                percentTotal += 700; // +700%
+                percentTotal += 700;
             if (this.player.itemTime.isUseLoX10)
-                percentTotal += 1000; // +1000%
+                percentTotal += 1000;
             if (this.player.itemTime.isUseLoX15)
-                percentTotal += 1500; // +1500%
+                percentTotal += 1500;
         }
 
-        // 8) Vệ tinh thông minh: +20%
-        if (this.player.satellite != null && this.player.satellite.isIntelligent) {
+        // (8) Vệ tinh thông minh: +20%
+        if (this.player.satellite != null && this.player.satellite.isIntelligent)
             percentTotal += 20;
-        }
 
-        // 9) Pet: bùa đệ tử, buax2 đệ tử, tlTNSMPet
+        // (9) Pet: bùa đệ tử, buax2 đệ tử, tlTNSMPet
         if (this.player.isPet) {
             Pet pet = (Pet) this.player;
             if (pet.master != null) {
-                if (pet.master.charms != null && pet.master.charms.tdDeTu > now) {
-                    percentTotal += 200; // +200%
-                }
-                if (pet.itemTime != null && pet.itemTime.lastTimeBuax2DeTu > now) {
-                    percentTotal += 200; // +200%
-                }
-                if (pet.master.nPoint != null && pet.master.nPoint.tlTNSMPet > 0) {
-                    percentTotal += (pet.master.nPoint.tlTNSMPet + 100); // ~(tl+100)%
-                }
+                if (pet.master.charms != null && pet.master.charms.tdDeTu > now)
+                    percentTotal += 200;
+                if (pet.itemTime != null && pet.itemTime.lastTimeBuax2DeTu > now)
+                    percentTotal += 200;
+                if (pet.master.nPoint != null && pet.master.nPoint.tlTNSMPet > 0)
+                    percentTotal += (pet.master.nPoint.tlTNSMPet + 100);
             }
         }
 
-        // 10) Áp % một lần lên base
+        // Áp phần trăm 1 lần lên base
         tiemNang = base + (base * percentTotal) / 100L;
 
-        // 11) Bùa Trí Tuệ – CỘNG HỆ SỐ (không cộng %)
+        // (10) Bùa Trí Tuệ – CỘNG HỆ SỐ (2+3+4 => 9 nếu bật cả 3)
         int triTueFactor = 0;
         if (this.player.charms != null) {
             if (this.player.charms.tdTriTue > now)
@@ -1918,32 +1910,21 @@ public class NPoint {
             if (this.player.charms.tdTriTue4 > now)
                 triTueFactor += 4; // x4
         }
-        if (triTueFactor > 0) {
-            tiemNang *= triTueFactor; // ví dụ x2+x3+x4 => *9
-        }
+        if (triTueFactor > 0)
+            tiemNang *= triTueFactor;
 
-        // 12) Giảm mạnh khi power rất cao (>= 60B): -80%
-        if (this.power >= 60_000_000_000L) {
-            tiemNang -= (tiemNang * 80) / 100L; // còn 20%
-        }
-
-        // 13) Event & Map multiplier
-        if (TimeUtil.checkTime(EventDAO.getRemainingTimeToIncreasePotentialAndPower())) {
+        // (12) Event & Map multiplier
+        if (TimeUtil.checkTime(EventDAO.getRemainingTimeToIncreasePotentialAndPower()))
             tiemNang *= 2;
-        }
         int mapId = this.player.zone.map.mapId;
-        if (MapService.gI().isMapNguHanhSon(mapId)) {
+        if (MapService.gI().isMapNguHanhSon(mapId))
             tiemNang *= 4;
-        }
-        if (MapService.gI().isMapBanDoKhoBau(mapId)) {
+        if (MapService.gI().isMapBanDoKhoBau(mapId))
             tiemNang *= 3;
-        }
-        // 122/123/124 (đưa về đây để quản lý tập trung)
-        if (mapId == 122 || mapId == 123 || mapId == 124) {
+        if (mapId == 122 || mapId == 123 || mapId == 124)
             tiemNang *= 2;
-        }
 
-        // 14) Tỉ lệ server + giảm theo power tiers
+        // (13) Tỉ lệ server + giảm theo power tiers
         tiemNang *= Manager.RATE_EXP_SERVER;
         tiemNang = calSubTNSM(tiemNang);
 

@@ -111,6 +111,7 @@ public class cn {
     public static int de42 = 250 * GIA_X;
     public static int de43 = 350 * GIA_X;
     public static int de44 = 750 * GIA_X;
+    public static int de45 = 850 * GIA_X;
 
     public static String petBuuNhiNm = "Bưu Nhí";
     public static String petFideNhiNm = "Fide Nhí";
@@ -119,6 +120,7 @@ public class cn {
     public static String petBuuGayNm = "Bưu Gầy";
     public static String petBerrusNhiNm = "Berrus Nhí";
     public static String petBlackNm = "Black Goku";
+    public static String petBerrusNm = "Berrus Hủy Diệt";
 
     //giá đổi skill
     public static int skill23 = 3000;

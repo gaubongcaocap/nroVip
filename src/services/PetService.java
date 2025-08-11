@@ -27,7 +27,6 @@ public class PetService {
             boolean forcePlayerGender,
             Byte superTypeOverride // chỉ dùng cho SUPER_DE_TU để set typePet = type tham số
     ) {
-        System.out.println(123123);
         // >>> CÁCH 1: nếu đã có đệ mà vẫn gọi create, tự chuyển thành change
         final boolean hasPet = (player != null && player.pet != null);
         if (!isChange && hasPet) {
@@ -125,8 +124,9 @@ public class PetService {
             case PIC:
                 return getDataPetPic();
             case BEERUS:
+                return getDataPetBerrus();
             case BLACK:
-                return getDataPetSuper();
+                return getDataPetBlack();
             case NORMAL:
             case SUPER:
             default:
@@ -134,7 +134,17 @@ public class PetService {
         }
     }
 
-    private int[] getDataPetSuper() { 
+    private int[] getDataPetBerrus() { 
+        int[] d = new int[5];
+        d[0] = Util.nextInt(5000, 7500);//hp
+        d[1] = Util.nextInt(5000, 7500);// mp
+        d[2] = Util.nextInt(130, 250); // dame
+        d[3] = Util.nextInt(100, 200); // def
+        d[4] = Util.nextInt(0, 40); // crit
+        return d;
+    }
+
+    private int[] getDataPetBlack() { 
         int[] d = new int[5];
         d[0] = Util.nextInt(5000, 7500);//hp
         d[1] = Util.nextInt(5000, 7500);// mp
@@ -224,11 +234,15 @@ public class PetService {
                 player.pointfusion.setMpFusion(Util.nextInt(25, 30));
                 player.pointfusion.setDameFusion(Util.nextInt(25, 30));
                 break;
-            case BEERUS:
             case BLACK:
-                player.pointfusion.setHpFusion(Util.nextInt(30, 40));
-                player.pointfusion.setMpFusion(Util.nextInt(30, 40));
-                player.pointfusion.setDameFusion(Util.nextInt(30, 40));
+                player.pointfusion.setHpFusion(Util.nextInt(30, 35));
+                player.pointfusion.setMpFusion(Util.nextInt(30, 35));
+                player.pointfusion.setDameFusion(Util.nextInt(30, 35));
+                break;
+            case BEERUS:
+                player.pointfusion.setHpFusion(Util.nextInt(35, 45));
+                player.pointfusion.setMpFusion(Util.nextInt(35, 45));
+                player.pointfusion.setDameFusion(Util.nextInt(35, 45));
                 break;
             default:
                 player.pointfusion.setHpFusion(0);
@@ -279,6 +293,10 @@ public class PetService {
 
     public void createBeerusPet(Player p, int gender, byte... limit) {
         createPet(p, PetType.BEERUS, false, (byte) gender, one(limit), false, null);
+    }
+
+    public void createBeerusPet(Player p, boolean isChange, int gender) {
+        createPet(p, PetType.BEERUS, isChange, (byte) gender, null, false, null);
     }
 
     public void changeBeerusPet(Player p) {
