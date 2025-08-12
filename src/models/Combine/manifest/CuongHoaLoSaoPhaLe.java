@@ -21,7 +21,7 @@ public class CuongHoaLoSaoPhaLe {
         Item trangBi = null;
 
         for (Item item : player.combine.itemsCombine) {
-            if (item.template.type < 5) {
+            if (item.template.type < 5||  item.template.type == 32) {
                 trangBi = item;
             } else if (item.template.id == 1438) {
                 duiDuc = item;

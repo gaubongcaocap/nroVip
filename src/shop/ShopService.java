@@ -918,12 +918,12 @@ public class ShopService {
                 Service.gI().sendMoney(player);
                 return true;
             }
-            if (itemShop.temp.id == 517 && player.inventory.itemsBag.size() >= 150) {
+            if (itemShop.temp.id == 517 && player.inventory.itemsBag.size() >= 120) {
                 Service.gI().sendThongBao(player, "Đã đạt mức tối đa");
                 Service.gI().sendMoney(player);
                 return true;
             }
-            if (itemShop.temp.id == 518 && player.inventory.itemsBox.size() >= 150) {
+            if (itemShop.temp.id == 518 && player.inventory.itemsBox.size() >= 120) {
                 Service.gI().sendThongBao(player, "Đã đạt mức tối đa");
                 Service.gI().sendMoney(player);
                 return true;

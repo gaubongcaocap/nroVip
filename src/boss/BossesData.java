@@ -1230,8 +1230,8 @@ public class BossesData {
                         "Goku Xì Ke", // name
                         ConstPlayer.XAYDA, // gender
                         new short[] { 101, 65, 66, -1, 1, -1 }, // outfit {head, body, leg, bag, aura, eff}
-                        500_000, // dame
-                        new long[] { 1_500_000_000 }, // hp
+                        300_000, // dame
+                        new long[] { 1_000_000_000 }, // hp
                         new int[] { 0, 14, 7 }, // map join
                         new int[][] {
                                         { Skill.DRAGON, 7, 1000 },
@@ -1240,7 +1240,7 @@ public class BossesData {
                                         { Skill.KHIEN_NANG_LUONG, 7, 120000 },
                                         { Skill.DICH_CHUYEN_TUC_THOI, 7, 20000 },
                                         { Skill.SUPER_KAME, 7, 15000 },
-                                        { Skill.BIEN_KHI, 7, 120000 },
+                                        { Skill.BIEN_KHI, 7, 180000 },
                                         { Skill.THAI_DUONG_HA_SAN, 7, 60000 } }, // skill
                         new String[] { "|-1|Hãy xem đây nhóc!" }, // text chat 1
                         new String[] {
@@ -1262,8 +1262,8 @@ public class BossesData {
                         "Vegeta Nghiện", // name
                         ConstPlayer.XAYDA, // gender
                         new short[] { 103, 16, 17, -1, 1, -1 }, // outfit {head, body, leg, bag, aura, eff}
-                        500_000, // dame
-                        new long[] { 1_500_000_000 }, // hp
+                        200_000, // dame
+                        new long[] { 900_000_000 }, // hp
                         new int[] { 0, 14, 7 }, // map join
                         new int[][] {
                                         { Skill.GALICK, 7, 1000 },
@@ -1271,7 +1271,7 @@ public class BossesData {
                                         { Skill.TAI_TAO_NANG_LUONG, 7, 10000 },
                                         { Skill.KHIEN_NANG_LUONG, 7, 120000 },
                                         { Skill.LIEN_HOAN_CHUONG, 7, 15000 },
-                                        { Skill.BIEN_KHI, 7, 120000 },
+                                        { Skill.BIEN_KHI, 7, 180000 },
                                         { Skill.DICH_CHUYEN_TUC_THOI, 7, 20000 },
                                         { Skill.THAI_DUONG_HA_SAN, 7, 60000 } }, // skill
                         new String[] { "|-1|Lũ cạn bả, hãy xem ta xuất chiêu!" }, // text chat 1

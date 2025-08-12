@@ -857,7 +857,7 @@ public class Mob {
         // }
 
         // Sao pha le
-        if (Util.isTrue(1, 200) || (player.nPoint.isDoSPL && Util.isTrue(5, 100))
+        if (Util.isTrue(1, 500) || (player.nPoint.isDoSPL && Util.isTrue(1, 500))
                 || (player.isActive() && Util.isTrue(1, 100))) {
             int rand = Util.nextInt(0, 6);
             ItemMap it = new ItemMap(zone, 441 + rand, 1, x, yEnd, player.id);
@@ -866,7 +866,7 @@ public class Mob {
         }
 
         // Da nang cap
-        if (Util.isTrue(1, 100) || (Util.isTrue(1, 100) && MapService.gI().isMapTuongLai(mapid))
+        if (Util.isTrue(1, 400) || (Util.isTrue(1, 400) && MapService.gI().isMapTuongLai(mapid))
                 || (player.isActive() && Util.isTrue(5, 100))) {
             int rand = Util.nextInt(0, 4);
             ItemMap it = new ItemMap(zone, 220 + rand, 1, x, yEnd, player.id);
@@ -881,7 +881,7 @@ public class Mob {
             if (player.isPet) {
                 player = ((Pet) player).master;
             }
-            if (Util.isTrue(1, 200) || (player.isActive() && Util.isTrue(1, 200))
+            if (Util.isTrue(1, 2000) || (player.isActive() && Util.isTrue(1, 2000))
                     || (player.isAdmin() && Util.isTrue(10, 50))) {
                 ItemMap it = ItemService.gI().randDoTL(this.zone, 1, x, yEnd, player.id);
                 list.add(it);
@@ -889,7 +889,7 @@ public class Mob {
                 ChatGlobalService.gI().autoChatGlobal(player, "[ Hệ Thống ] " + player.name + " vừa nhặt được "
                         + it.itemTemplate.name + " tại " + this.zone.map.mapName + " khu " + this.zone.zoneId);
             }
-            if ((Util.isTrue(1, 200) || (player.isActive() && Util.isTrue(2, 300)))
+            if ((Util.isTrue(1, 400) || (player.isActive() && Util.isTrue(2, 200)))
                     && InventoryService.gI().fullSetThan(player)) {
                 ItemMap it = new ItemMap(zone, Util.nextInt(663, 667), 1, x, yEnd, player.id);
                 it.options.add(new Item.ItemOption(73, 0));
