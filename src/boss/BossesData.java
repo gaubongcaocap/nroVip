@@ -480,11 +480,12 @@ public class BossesData {
                         ConstPlayer.TRAI_DAT, // gender
                         new short[] { 255, 256, 257, -1, -1, -1 }, // outfit {head, body, leg, bag, aura, eff}
                         250_000, // dame
-                        new long[] { 130_000_000 }, // hp
+                        new long[] { 150_000_000 }, // hp
                         new int[] { 96, 94, 93 }, // map join
                         new int[][] {
-                                        { Skill.THOI_MIEN, 3, 10000 },
+                                        { Skill.THOI_MIEN, 7, 10000 },
                                         { Skill.KHIEN_NANG_LUONG, 2, 70000 },
+                                        { Skill.THAI_DUONG_HA_SAN, 7, 70000 },
                                         { Skill.KAMEJOKO, 7, 10000 },
                                         { Skill.LIEN_HOAN, 7, 1000 }, }, // skill
                         new String[] { "|-2|Chào anh! em đứng đây từ chiều",
@@ -517,8 +518,9 @@ public class BossesData {
                         new long[] { 130_000_000 }, // hp
                         new int[] { 96, 94, 93 }, // map join
                         new int[][] {
-                                        { Skill.KAMEJOKO, 7, 1000 },
+                                        { Skill.MASENKO, 7, 1000 },
                                         { Skill.KHIEN_NANG_LUONG, 2, 70000 },
+                                        { Skill.THAI_DUONG_HA_SAN, 3, 50000 },
                                         { Skill.LIEN_HOAN, 7, 10000 }, }, // skill//skill
                         new String[] {}, // text chat 1
                         new String[] { "|-1|Oải rồi hả?",
@@ -701,7 +703,9 @@ public class BossesData {
                                         { Skill.KHIEN_NANG_LUONG, 2, 70000 },
                                         { Skill.DICH_CHUYEN_TUC_THOI, 7, 20000 },
                                         { Skill.TAI_TAO_NANG_LUONG, 7, 20000 },
-                                        { Skill.GALICK, 7, 1000 }, }, // skill
+                                        { Skill.MA_PHONG_BA, 7, 20000 },
+                                        { Skill.THOI_MIEN, 4, 30000 },
+                                        { Skill.LIEN_HOAN, 7, 1000 }, }, // skill
                         new String[] {}, // text chat 1
                         new String[] { "|-1|Mau đền mạng cho những người bạn của ta",
                                         "|-1|Sức mạnh của ta chênh nhau với các ngươi một trời một vực đấy!",
