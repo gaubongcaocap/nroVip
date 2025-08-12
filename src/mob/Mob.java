@@ -582,44 +582,44 @@ public class Mob {
         }
         int mapid = player.zone.map.mapId;
 
-        // SK Tết Nguyên Đán
-        if (EventManager.LUNNAR_NEW_YEAR) {
-            if (Util.isTrue(1, 300)) {
-                ItemMap it = new ItemMap(zone, ConstItem.THIT_HEO, 1, x, yEnd, player.id);
-                it.options.add(new Item.ItemOption(86, 0));
-                list.add(it);
-            }
-            if (Util.isTrue(1, 300)) {
-                ItemMap it = new ItemMap(zone, ConstItem.THUNG_NEP, 1, x, yEnd, player.id);
-                it.options.add(new Item.ItemOption(86, 0));
-                list.add(it);
-            }
-            if (Util.isTrue(1, 300) && this.tempId != 0) {
-                ItemMap it = new ItemMap(zone, ConstItem.LA_DONG, 1, x, yEnd, player.id);
-                it.options.add(new Item.ItemOption(86, 0));
-                list.add(it);
-            }
-            if (Util.isTrue(10, 100) && MapService.gI().isMapPhoBan(mapid)) {
-                ItemMap it = new ItemMap(zone, ConstItem.THUNG_DAU_XANH, 1, x, yEnd, player.id);
-                it.options.add(new Item.ItemOption(86, 0));
-                list.add(it);
-            }
-        }
+        // // SK Tết Nguyên Đán
+        // if (EventManager.LUNNAR_NEW_YEAR) {
+        //     if (Util.isTrue(1, 300)) {
+        //         ItemMap it = new ItemMap(zone, ConstItem.THIT_HEO, 1, x, yEnd, player.id);
+        //         it.options.add(new Item.ItemOption(86, 0));
+        //         list.add(it);
+        //     }
+        //     if (Util.isTrue(1, 300)) {
+        //         ItemMap it = new ItemMap(zone, ConstItem.THUNG_NEP, 1, x, yEnd, player.id);
+        //         it.options.add(new Item.ItemOption(86, 0));
+        //         list.add(it);
+        //     }
+        //     if (Util.isTrue(1, 300) && this.tempId != 0) {
+        //         ItemMap it = new ItemMap(zone, ConstItem.LA_DONG, 1, x, yEnd, player.id);
+        //         it.options.add(new Item.ItemOption(86, 0));
+        //         list.add(it);
+        //     }
+        //     if (Util.isTrue(10, 100) && MapService.gI().isMapPhoBan(mapid)) {
+        //         ItemMap it = new ItemMap(zone, ConstItem.THUNG_DAU_XANH, 1, x, yEnd, player.id);
+        //         it.options.add(new Item.ItemOption(86, 0));
+        //         list.add(it);
+        //     }
+        // }
 
-        if (EventManager.CHRISTMAS) {
-            Player pl = player;
-            if (pl.isPet) {
-                pl = ((Pet) pl).master;
-            }
-            if (pl.isPet) {
-                pl = ((Pet) pl).master;
-            }
-            if (Util.isTrue(1, 100)) {
-                if (pl.itemEvent != null && pl.itemEvent.canDropTatVoGiangSinh(100)) {
-                    list.add(new ItemMap(zone, 649, 1, x, yEnd, player.id));
-                }
-            }
-        }
+        // if (EventManager.CHRISTMAS) {
+        //     Player pl = player;
+        //     if (pl.isPet) {
+        //         pl = ((Pet) pl).master;
+        //     }
+        //     if (pl.isPet) {
+        //         pl = ((Pet) pl).master;
+        //     }
+        //     if (Util.isTrue(1, 100)) {
+        //         if (pl.itemEvent != null && pl.itemEvent.canDropTatVoGiangSinh(100)) {
+        //             list.add(new ItemMap(zone, 649, 1, x, yEnd, player.id));
+        //         }
+        //     }
+        // }
         // if (mapid == 5 || mapid == 13) {
         // Player pl = player;
         // if (pl.isPet) {
@@ -634,36 +634,36 @@ public class Mob {
         // }
         // }
         // }
-        if (EventManager.INTERNATIONAL_WOMANS_DAY) {
-            Player pl = player;
-            if (pl.isPet) {
-                pl = ((Pet) pl).master;
-            }
-            if (pl.isPet) {
-                pl = ((Pet) pl).master;
-            }
-            if (Util.isTrue(1, 50)) {
-                if (pl.itemEvent != null && pl.itemEvent.canDropHoaHong(100)) {
-                    list.add(new ItemMap(zone, 610, 1, x, yEnd, player.id));
-                }
-            }
-        }
+        // if (EventManager.INTERNATIONAL_WOMANS_DAY) {
+        //     Player pl = player;
+        //     if (pl.isPet) {
+        //         pl = ((Pet) pl).master;
+        //     }
+        //     if (pl.isPet) {
+        //         pl = ((Pet) pl).master;
+        //     }
+        //     if (Util.isTrue(1, 50)) {
+        //         if (pl.itemEvent != null && pl.itemEvent.canDropHoaHong(100)) {
+        //             list.add(new ItemMap(zone, 610, 1, x, yEnd, player.id));
+        //         }
+        //     }
+        // }
 
-        if (Util.isTrue(1, 400)) {
-            ItemMap it = new ItemMap(zone, 1530, 1, x, yEnd, player.id);
-            it.options.add(new Item.ItemOption(30, 0));
-            list.add(it);
+        // if (Util.isTrue(1, 400)) {
+        //     ItemMap it = new ItemMap(zone, 1530, 1, x, yEnd, player.id);
+        //     it.options.add(new Item.ItemOption(30, 0));
+        //     list.add(it);
 
-        }
-        if (EventManager.HALLOWEEN) {
-            if (MapService.gI().isMapEventHalloween(mapid)) {
-                if (Util.isTrue(1, 50)) {
-                    list.add(new ItemMap(zone, 707, 1, x, yEnd, player.id));
-                } else if (Util.isTrue(1, 50)) {
-                    list.add(new ItemMap(zone, 708, 1, x, yEnd, player.id));
-                }
-            }
-        }
+        // }
+        // if (EventManager.HALLOWEEN) {
+        //     if (MapService.gI().isMapEventHalloween(mapid)) {
+        //         if (Util.isTrue(1, 50)) {
+        //             list.add(new ItemMap(zone, 707, 1, x, yEnd, player.id));
+        //         } else if (Util.isTrue(1, 50)) {
+        //             list.add(new ItemMap(zone, 708, 1, x, yEnd, player.id));
+        //         }
+        //     }
+        // }
 
         if (mapid == 5 || mapid == 13) {
             Player pl = player;
@@ -680,7 +680,7 @@ public class Mob {
             }
         }
         // Set kich hoat Vip
-        if (Util.isTrue(1, 1000) && MapService.gI().isMapUpSKH(mapid)) {
+        if (Util.isTrue(1, 500) && MapService.gI().isMapUpSKH(mapid)) {
             short itTemp = (short) ItemService.gI().randTempItemKichHoat(player.gender);
             ItemMap it = new ItemMap(zone, itTemp, 1, x, yEnd, player.id);
             List<Item.ItemOption> ops = ItemService.gI().getListOptionItemShop(itTemp);
@@ -698,26 +698,26 @@ public class Mob {
             ChatGlobalService.gI().autoChatGlobal(player,
                     "[ Hệ Thống ] " + player.name + " vừa nhặt được " + it.itemTemplate.name + " Sét Kích Hoạt");
         }
-        if (Util.isTrue(1, 300)) {
-            ItemMap it = new ItemMap(zone, ConstItem.THIT_HEO, 1, x, yEnd, player.id);
-            it.options.add(new Item.ItemOption(86, 0));
-            list.add(it);
-        }
-        if (Util.isTrue(1, 300)) {
-            ItemMap it = new ItemMap(zone, ConstItem.THUNG_NEP, 1, x, yEnd, player.id);
-            it.options.add(new Item.ItemOption(86, 0));
-            list.add(it);
-        }
-        if (Util.isTrue(1, 300) && this.tempId != 0) {
-            ItemMap it = new ItemMap(zone, ConstItem.LA_DONG, 1, x, yEnd, player.id);
-            it.options.add(new Item.ItemOption(86, 0));
-            list.add(it);
-        }
-        if (Util.isTrue(10, 100) && MapService.gI().isMapPhoBan(mapid)) {
-            ItemMap it = new ItemMap(zone, ConstItem.THUNG_DAU_XANH, 1, x, yEnd, player.id);
-            it.options.add(new Item.ItemOption(86, 0));
-            list.add(it);
-        }
+        // if (Util.isTrue(1, 300)) {
+        //     ItemMap it = new ItemMap(zone, ConstItem.THIT_HEO, 1, x, yEnd, player.id);
+        //     it.options.add(new Item.ItemOption(86, 0));
+        //     list.add(it);
+        // }
+        // if (Util.isTrue(1, 300)) {
+        //     ItemMap it = new ItemMap(zone, ConstItem.THUNG_NEP, 1, x, yEnd, player.id);
+        //     it.options.add(new Item.ItemOption(86, 0));
+        //     list.add(it);
+        // }
+        // if (Util.isTrue(1, 300) && this.tempId != 0) {
+        //     ItemMap it = new ItemMap(zone, ConstItem.LA_DONG, 1, x, yEnd, player.id);
+        //     it.options.add(new Item.ItemOption(86, 0));
+        //     list.add(it);
+        // }
+        // if (Util.isTrue(10, 100) && MapService.gI().isMapPhoBan(mapid)) {
+        //     ItemMap it = new ItemMap(zone, ConstItem.THUNG_DAU_XANH, 1, x, yEnd, player.id);
+        //     it.options.add(new Item.ItemOption(86, 0));
+        //     list.add(it);
+        // }
 
         if (player.itemTime.isUseMayDo && (Util.isTrue(1, 100) || (player.isActive() && Util.isTrue(1, 50)))
                 && this.tempId > 57 && this.tempId < 66) {
@@ -740,11 +740,11 @@ public class Mob {
             }
 
             // sự kiện
-            if (Util.isTrue(1, 750)) {
-                ItemMap it = new ItemMap(zone, 1743, 1, x, yEnd, player.id);
-                it.options.add(new Item.ItemOption(30, 0));
-                list.add(it);
-            }
+            // if (Util.isTrue(1, 750)) {
+            //     ItemMap it = new ItemMap(zone, 1743, 1, x, yEnd, player.id);
+            //     it.options.add(new Item.ItemOption(30, 0));
+            //     list.add(it);
+            // }
         }
         if (player.isPl() && TaskService.gI().getIdTask(player) == ConstTask.TASK_31_6) {
             if (Util.isTrue(1, 100)) {
@@ -850,11 +850,11 @@ public class Mob {
         // it.options.add(new Item.ItemOption(randomOption, 0));
         // }
         // }
-        if (player.inventory.haveOption(player.inventory.itemsBody, 5, 106) && Util.isTrue(1, 2000)) {
-            ItemMap it = new ItemMap(zone, 1207, 1, x, yEnd, player.id);
-            it.options.add(new Item.ItemOption(30, 0));
-            list.add(it);
-        }
+        // if (player.inventory.haveOption(player.inventory.itemsBody, 5, 106) && Util.isTrue(1, 2000)) {
+        //     ItemMap it = new ItemMap(zone, 1207, 1, x, yEnd, player.id);
+        //     it.options.add(new Item.ItemOption(30, 0));
+        //     list.add(it);
+        // }
 
         // Sao pha le
         if (Util.isTrue(1, 200) || (player.nPoint.isDoSPL && Util.isTrue(5, 100))
@@ -866,8 +866,8 @@ public class Mob {
         }
 
         // Da nang cap
-        if (Util.isTrue(1, 200) || (Util.isTrue(5, 300) && MapService.gI().isMapTuongLai(mapid))
-                || (player.isActive() && Util.isTrue(5, 300))) {
+        if (Util.isTrue(1, 100) || (Util.isTrue(1, 100) && MapService.gI().isMapTuongLai(mapid))
+                || (player.isActive() && Util.isTrue(5, 100))) {
             int rand = Util.nextInt(0, 4);
             ItemMap it = new ItemMap(zone, 220 + rand, 1, x, yEnd, player.id);
             it.options.add(new Item.ItemOption(71 - rand, 0));
@@ -881,7 +881,7 @@ public class Mob {
             if (player.isPet) {
                 player = ((Pet) player).master;
             }
-            if (Util.isTrue(1, 20000) || (player.isActive() && Util.isTrue(1, 200000))
+            if (Util.isTrue(1, 200) || (player.isActive() && Util.isTrue(1, 200))
                     || (player.isAdmin() && Util.isTrue(10, 50))) {
                 ItemMap it = ItemService.gI().randDoTL(this.zone, 1, x, yEnd, player.id);
                 list.add(it);
@@ -889,7 +889,7 @@ public class Mob {
                 ChatGlobalService.gI().autoChatGlobal(player, "[ Hệ Thống ] " + player.name + " vừa nhặt được "
                         + it.itemTemplate.name + " tại " + this.zone.map.mapName + " khu " + this.zone.zoneId);
             }
-            if ((Util.isTrue(1, 500) || (player.isActive() && Util.isTrue(2, 100)))
+            if ((Util.isTrue(1, 200) || (player.isActive() && Util.isTrue(2, 300)))
                     && InventoryService.gI().fullSetThan(player)) {
                 ItemMap it = new ItemMap(zone, Util.nextInt(663, 667), 1, x, yEnd, player.id);
                 it.options.add(new Item.ItemOption(73, 0));
@@ -935,18 +935,18 @@ public class Mob {
         // }
         // Item nro , rác
         if (Util.isTrue(1, 100) || (player.isActive() && Util.isTrue(1, 100))) {
-            list.add(new ItemMap(zone, 225, 1, x, yEnd, player.id));
+            //list.add(new ItemMap(zone, 225, 1, x, yEnd, player.id));
         }
         // if (Util.isTrue(1, 100) || (player.isActive() && Util.isTrue(1, 200))) {
         // list.add(new ItemMap(zone, 533, 1, x, yEnd, player.id));
         // }
-        if (Util.isTrue(1, 10000) || player.isActive() && Util.isTrue(1, 5000)) {
+        if (Util.isTrue(1, 100) || player.isActive() && Util.isTrue(5, 200)) {
             list.add(new ItemMap(zone, 18, 1, x, yEnd, player.id));
         }
-        if (Util.isTrue(1, 10000) || player.isActive() && Util.isTrue(1, 500)) {
+        if (Util.isTrue(1, 100) || player.isActive() && Util.isTrue(1, 200)) {
             list.add(new ItemMap(zone, 19, 1, x, yEnd, player.id));
         }
-        if (Util.isTrue(1, 10000) || player.isActive() && Util.isTrue(1, 500)) {
+        if (Util.isTrue(1, 100) || player.isActive() && Util.isTrue(1, 200)) {
             list.add(new ItemMap(zone, 20, 1, x, yEnd, player.id));
         }
         // Úp quái rơi ngọc
@@ -957,25 +957,25 @@ public class Mob {
             list.add(new ItemMap(zone, 861, 1, x, yEnd, player.id));
         }
         // Úp quái bí ngô 1 - 7 sao
-        if (Util.isTrue(1, 10000) || (player.isActive() && Util.isTrue(1, 15000))) {
+        if (Util.isTrue(1, 1000) || (player.isActive() && Util.isTrue(1, 500))) {
             list.add(new ItemMap(zone, 702, 1, x, yEnd, player.id));
         }
-        if (Util.isTrue(1, 10000) || (player.isActive() && Util.isTrue(1, 13000))) {
+        if (Util.isTrue(1, 1000) || (player.isActive() && Util.isTrue(1, 500))) {
             list.add(new ItemMap(zone, 703, 1, x, yEnd, player.id));
         }
-        if (Util.isTrue(1, 10000) || (player.isActive() && Util.isTrue(1, 13000))) {
+        if (Util.isTrue(1, 1000) || (player.isActive() && Util.isTrue(1, 500))) {
             list.add(new ItemMap(zone, 704, 1, x, yEnd, player.id));
         }
-        if (Util.isTrue(1, 10000) || (player.isActive() && Util.isTrue(1, 13000))) {
+        if (Util.isTrue(1, 1000) || (player.isActive() && Util.isTrue(1, 500))) {
             list.add(new ItemMap(zone, 705, 1, x, yEnd, player.id));
         }
-        if (Util.isTrue(1, 10000) || (player.isActive() && Util.isTrue(1, 12000))) {
+        if (Util.isTrue(1, 1000) || (player.isActive() && Util.isTrue(1, 7000))) {
             list.add(new ItemMap(zone, 706, 1, x, yEnd, player.id));
         }
-        if (Util.isTrue(1, 10000) || (player.isActive() && Util.isTrue(1, 11000))) {
+        if (Util.isTrue(1, 1000) || (player.isActive() && Util.isTrue(1, 7000))) {
             list.add(new ItemMap(zone, 707, 1, x, yEnd, player.id));
         }
-        if (Util.isTrue(1, 10000) || (player.isActive() && Util.isTrue(1, 11000))) {
+        if (Util.isTrue(1, 1000) || (player.isActive() && Util.isTrue(1, 7000))) {
             list.add(new ItemMap(zone, 708, 1, x, yEnd, player.id));
         }
         // Manh thien su
