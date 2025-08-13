@@ -34,9 +34,16 @@ import boss.list.Broly.Broly;
 import boss.list.Broly.SuperBroly;
 import boss.list.ChristmasEvent.OngGiaNoel;
 import boss.list.TaoPaiPai.TaoPaiPai;
+import boss.list.ThanHuyDiet.Bill2;
+import boss.list.ThanHuyDiet.Whis2;
 import boss.list.Frieza.Fide;
 import boss.list.HungVuongEvent.SonTinh;
 import boss.list.HungVuongEvent.ThuyTinh;
+import boss.list.Kimetsu.Inosuke;
+import boss.list.Kimetsu.InosukePig;
+import boss.list.Kimetsu.Nezuko;
+import boss.list.Kimetsu.Tanjiro;
+import boss.list.Kimetsu.Zenitsu;
 import boss.list.HalloweenEvent.BiMa;
 import boss.list.HalloweenEvent.Doi;
 import boss.list.HalloweenEvent.MaTroi;
@@ -98,6 +105,7 @@ import boss.list.Cell.XENCON7;
 import boss.list.Cumber.Cumber;
 import boss.list.LunarNewYearEvent.LanCon;
 import boss.miniboss.SoiHecQuyn;
+import item.Item;
 import player.Player;
 import network.Message;
 import services.MapService;
@@ -164,6 +172,14 @@ public class BossManager implements Runnable {
         this.createBoss(BossID.CUMBER);
         this.createBoss(SOI_HEC_QUYN1, 3);
         this.createBoss(BossID.GOKU_HUYDIET,3);
+        this.createBoss(BossID.TANJIRO,1);
+        this.createBoss(BossID.INOSUKE_PIG,1);
+        this.createBoss(BossID.INOSUKE,1);
+        this.createBoss(BossID.ZENITSU,1);
+        this.createBoss(BossID.NEZUKO,1);
+
+        this.createBoss(BossID.BILL2,1);
+        this.createBoss(BossID.WHIS2,1);
     }
 
     public void createBoss(int bossID, int total) {
@@ -361,6 +377,20 @@ public class BossManager implements Runnable {
                     new boss.list.GokuVegeta.Goku();
                 case BossID.CADIC_HUYDIET ->
                     new boss.list.GokuVegeta.Cadic();
+                case BossID.TANJIRO ->
+                    new Tanjiro();
+                case BossID.INOSUKE_PIG ->
+                    new InosukePig();
+                case BossID.INOSUKE ->
+                    new Inosuke();
+                case BossID.ZENITSU ->
+                    new Zenitsu();
+                case BossID.NEZUKO ->
+                    new Nezuko();
+                case BossID.BILL2 ->
+                    new Bill2();
+                case BossID.WHIS2 ->
+                    new Whis2();
                 default ->
                     null;
             };
@@ -381,10 +411,11 @@ public class BossManager implements Runnable {
         return null;
     }
 
-    public void showListBoss(Player player) {
-        if (!player.isAdmin()) {
+    public void showListBoss(Player player,Item item) {
+        if (!player.isAdmin() && item == null) {
             return;
         }
+
         player.iDMark.setMenuType(3);
         Message msg;
         try {

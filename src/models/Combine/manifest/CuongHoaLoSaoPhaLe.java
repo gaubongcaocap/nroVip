@@ -120,13 +120,12 @@ public class CuongHoaLoSaoPhaLe {
             return;
         }
         CombineService.gI().baHatMit.npcChat(player, "Bá zô mà núc...");
-        if (Util.isTrue(50, 100)) {
-            if (starCuongHoa == 8) {
+        if (Util.isTrue(getRatio(star), 100)) {
+            if (starCuongHoa >= 8 && star == 8) {
                 trangBi.addOptionParam(228, 8);
-            } else if (starCuongHoa == 9) {
-                trangBi.addOptionParam(228, 9);
-            }{
-                trangBi.addOptionParam(228, 1);
+            } else if (starCuongHoa > 8 && star == 9) {
+                trangBi.removeOption(228);
+                trangBi.addOptionParam(228,9);
             }
             CombineService.gI().sendEffectCombineItem(player, (byte) 7, (short) trangBi.template.iconID, (short) -1);
             Util.setTimeout(() -> {
@@ -134,9 +133,9 @@ public class CuongHoaLoSaoPhaLe {
             }, 2000);
         } else {
             CombineService.gI().sendEffectCombineItem(player, (byte) 8, (short) -1, (short) -1);
-            Util.setTimeout(() -> {
-                CombineService.gI().baHatMit.npcChat(player, "Con còn hơi non nên đừng buồn con nhé");
-            }, 2000);
+            // Util.setTimeout(() -> {
+            //     CombineService.gI().baHatMit.npcChat(player, "Con còn hơi non nên đừng buồn con nhé");
+            // }, 2000);
         }
         player.inventory.subGemAndRuby(50);
         InventoryService.gI().subQuantityItemsBag(player, hematite, 1);

@@ -619,7 +619,7 @@ public class NpcFactory {
                             case 3 ->
                                 Input.gI().createFormFindPlayer(player);
                             case 4 ->
-                                BossManager.gI().showListBoss(player);
+                                BossManager.gI().showListBoss(player,null);
                             case 5 ->
                                 BossManager.gI().createBoss(BossID.SUPER_BROLY);
                             case 6 ->

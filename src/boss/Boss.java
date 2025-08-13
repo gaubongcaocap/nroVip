@@ -6,6 +6,7 @@ package boss;
  * @author YourSoulMatee
  */
 import consts.ConstPlayer;
+import item.Item;
 import boss.iboss.IBossOutfit;
 import network.Message;
 import java.util.List;

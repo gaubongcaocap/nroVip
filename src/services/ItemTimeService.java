@@ -73,7 +73,6 @@ public class ItemTimeService {
         if (player.itemTime.isUseLoX15) {
             sendItemTime(player, 21876, (int) ((TIME_30P- (System.currentTimeMillis() - player.itemTime.lastTimeLoX15)) / 1000));
         }
-      
         if (player.itemTime.isUseBuax2DeTu) {
             sendItemTime(player, 13540, (int) ((TIME_30P- (System.currentTimeMillis() - player.itemTime.lastTimeBuax2DeTu)) / 1000));
         }
@@ -108,7 +107,9 @@ public class ItemTimeService {
         if (player.itemTime.isUseCuongNo2) {
             sendItemTime(player, 10716, (int) ((TIME_ITEM - (System.currentTimeMillis() - player.itemTime.lastTimeCuongNo2)) / 1000));
         }
-
+        if (player.itemTime.isUserBanhChung) {
+            sendItemTime(player, 11717, (int) ((TIME_ITEM - (System.currentTimeMillis() - player.itemTime.lastTimeBanhChung)) / 1000));
+        }
         if (player.itemTime.isUseAnDanh2) {
             sendItemTime(player, 10717, (int) ((TIME_ITEM - (System.currentTimeMillis() - player.itemTime.lastTimeAnDanh2)) / 1000));
         }

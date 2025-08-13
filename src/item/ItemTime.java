@@ -270,7 +270,7 @@ public class ItemTime {
             }
         }
         if (isUserBanhChung) {
-            if (Util.canDoWithTime(lastTimeBanhChung, TIME_ITEM)) {
+            if (Util.canDoWithTime(lastTimeBanhChung, TIME_30P)) {
                 isUserBanhChung = false;
                 Service.gI().point(player);
             }

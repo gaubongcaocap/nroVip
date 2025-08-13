@@ -262,6 +262,7 @@ public class PDTSqlFetcher {
             player.event.setEventPoint(rs.getInt("event_point"));
             player.event.setEventPointBHM(rs.getInt("event_point_boss"));
             player.event.setKillBossPoint(rs.getInt("kill_boss_point"));
+            player.event.setVnd(rs.getInt("vnd"));
             player.event.setEventPointNHS(rs.getInt("event_point_nhs"));
             player.event.setEventPointQuai(rs.getInt("event_point_quai"));
             player.event.setEventPointQuyLao(rs.getInt("diem_quy_lao"));
@@ -609,6 +610,7 @@ public class PDTSqlFetcher {
             int timeUseNCD = 0;
             int timeUseBuax2DeTu = 0;
             int timeUseKhauTrang = 0;
+            int timeUseBanhChung = 0;
             int timeBoHuyet = Integer.parseInt(String.valueOf(dataArray.get(0)));
             int timeBoHuyet2 = Integer.parseInt(String.valueOf(dataArray.get(1)));
             int timeBoKhi = Integer.parseInt(String.valueOf(dataArray.get(2)));
@@ -730,6 +732,7 @@ public class PDTSqlFetcher {
             player.itemTime.isUseKhauTrang = timeUseKhauTrang != 0;
             player.itemTime.iconMeal3 = iconMeal3;
             player.itemTime.isEatMeal3 = timeMeal3 != 0;
+            player.itemTime.lastTimeBanhChung = System.currentTimeMillis() - (ItemTime.TIME_30P - timeUseBanhChung);
             dataArray.clear();
 
             //data nhiệm vụ

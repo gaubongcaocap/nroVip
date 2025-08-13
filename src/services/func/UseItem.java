@@ -7,6 +7,7 @@ package services.func;
  */
 import boss.Boss;
 import boss.BossID;
+import boss.BossManager;
 import boss.miniboss.SoiHecQuyn;
 import consts.ConstItem;
 import models.Combine.CombineService;
@@ -297,6 +298,10 @@ public class UseItem {
                     case 99: {
                         InventoryService.gI().itemBagToBody(pl, indexBag);
                         Service.gI().sendEffPlayer(pl);
+                        break;
+                    }
+                    case 39: {
+                        BossManager.gI().showListBoss(pl,item);
                         break;
                     }
                     default:
@@ -639,6 +644,7 @@ public class UseItem {
                             case 2075: // rocket
                             case 1233: // Nồi cơm điện
                             case 579:
+                            case 1701:
                             case 1045: // đuôi khỉ
                                 // if (pl.itemTime.isUseDK) {
                                 // Service.gI().sendThongBao(pl, "Chỉ được sử dụng 1 cái");
@@ -1207,6 +1213,11 @@ public class UseItem {
                 }
                 pl.itemTime.lastTimeCuongNo = System.currentTimeMillis();
                 pl.itemTime.isUseCuongNo = true;
+                Service.gI().point(pl);
+                break;
+           case 1701: // Bánh Chưng
+                pl.itemTime.lastTimeBanhChung = System.currentTimeMillis();
+                pl.itemTime.isUserBanhChung = true;
                 Service.gI().point(pl);
                 break;
             case 382: // bổ huyết

@@ -202,9 +202,12 @@ public class Pet extends Player {
             Service.gI().sendThongBao(this.master, "Vui lòng đợi "
                     + TimeUtil.getTimeLeft(lastTimeUnfusion, TIME_WAIT_AFTER_UNFUSION / 1000) + " nữa");
         }
+
+        System.out.println(12313);
     }
 
     public void fusion2(boolean porata) {
+        System.out.println(43645756);
         if (this.isDie()) {
             Service.gI().sendThongBao(master, "Yêu cầu phải có đệ tử và đệ tử còn sống");
             return;

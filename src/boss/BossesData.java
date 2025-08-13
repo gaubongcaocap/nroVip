@@ -1260,7 +1260,7 @@ public class BossesData {
                                         "|-2|Goku tỉnh lại đi!", }, // text chat 2
                         new String[] { "|-1|Sao mọi thứ lại thế này" }, // text chat 3
                         REST_30_M,
-                        new int[] { BossID.CADIC_HUYDIET} );
+                        new int[] { BossID.CADIC_HUYDIET });
 
         public static final BossData CADIC_HUYDIET = new BossData(
                         "Vegeta Nghiện", // name
@@ -2826,6 +2826,206 @@ public class BossesData {
                         new String[] { "|-1|Híc lần sau ta sẽ cho ngươi phá sản",
                                         "|-2|Chừa thói ăn trộm nghe chưa" }, // text chat 3
                         REST_1_M);
+
+        public static final BossData TANJIRO = new BossData(
+                        "Tanjiro Ấn Diệt Quỷ", // name
+                        ConstPlayer.XAYDA, // gender
+                        new short[] { 1119, 1120, 1121, -1, 1, -1 }, // outfit {head, body, leg, bag, aura, eff}
+                        900_000, // dame
+                        new long[] { 600_000_000 }, // hp
+                        new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25,
+                                        26, 27, 28,
+                                        29, 30, 31, 32, 33, 34, 35, 36, 37 }, // map join
+                        new int[][] {
+                                        { Skill.GALICK, 7, 1000 }, { Skill.GALICK, 7, 1000 },{ Skill.LIEN_HOAN, 7, 1000 },
+                                        { Skill.ANTOMIC, 7, 1000 },{ Skill.LIEN_HOAN, 7, 1000 },{ Skill.LIEN_HOAN, 7, 1000 },
+                                        { Skill.TAI_TAO_NANG_LUONG, 7, 5000 },{ Skill.LIEN_HOAN, 7, 1000 },{ Skill.LIEN_HOAN, 7, 1000 },
+                                        { Skill.LIEN_HOAN_CHUONG, 7, 10000 },{ Skill.LIEN_HOAN_CHUONG, 7, 10000 },{ Skill.LIEN_HOAN, 7, 1000 },
+                                        { Skill.TAI_TAO_NANG_LUONG, 7, 10000 },{ Skill.TAI_TAO_NANG_LUONG, 7, 10000 },{ Skill.LIEN_HOAN, 7, 1000 },
+                                        { Skill.THAI_DUONG_HA_SAN, 7, 30000 }, { Skill.THAI_DUONG_HA_SAN, 7, 40000 },{ Skill.LIEN_HOAN, 7, 1000 },
+                                        { Skill.LIEN_HOAN, 7, 60000 } ,{ Skill.LIEN_HOAN, 7, 1000 }}, // skill
+                        new String[] { "|-1|Đồng đội của taaaa!" }, // text chat 1
+                        new String[] {
+                                        "|-1|Mày có biết tại sao Zenitsu không rút kiếm ra không?",
+                                        "|-1|Vì rút kiếm chỉa vào đồng đội là điều cấm kỵ!",
+                                        "|-1|Và mày ở đây, tận hưởng niềm vui trong khi người khác đang đau đớn",
+                                        "|-1|Mày đúng là một kẻ đáng khinh!!!",
+                                        "|-1|Nhất định anh sẽ đưa mày trở về làm người",
+                                        "|-1|Có trình không",
+                                        "|-2|Hắn lợi hại quá!",
+                                        "|-1|Tao sẽ thiêu rụi tất cả bằng thanh kiếm của ta",
+                                        "|-2|Dừng tay lại đi",
+                                        "|-1|Hơi thở của rồng",
+                                        "|-1|Tao cũng sẽ đến lấy đầu mày với lưỡi kiếm này!!!",
+                                        "|-2|Yamerooo", }, // text chat 2
+                        new String[] { "|-1|Sao mọi thứ lại thế này", "|-1|Các ngươi là ai",
+                                        "|-2|Tụi tao là thợ săn quỷ", "|-1|Tao sẽ trả thù" }, // text chat 3
+                        REST_30_M, new int[] { BossID.INOSUKE_PIG, BossID.INOSUKE, BossID.ZENITSU, BossID.NEZUKO });
+
+        public static final BossData INOSUKE_PIG = new BossData(
+                        "Inosuke Hơi Thở Dã Thú", // name
+                        ConstPlayer.XAYDA, // gender
+                        new short[] { 1122, 1123, 1124, -1, 1, -1 }, // outfit {head, body, leg, bag, aura, eff}
+                        100_000, // dame
+                        new long[] { 450_000_000 }, // hp
+                        new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25,
+                                        26, 27, 28,
+                                        29, 30, 31, 32, 33, 34, 35, 36, 37 }, // map join
+                        new int[][] {
+                                        { Skill.DRAGON, 7, 1000 },
+                                        { Skill.LIEN_HOAN, 7, 500 },{ Skill.GALICK, 7, 500 },
+                                        { Skill.LIEN_HOAN_CHUONG, 7, 30000 },{ Skill.LIEN_HOAN, 7, 500 },
+                                        { Skill.THOI_MIEN, 7, 30000 },{ Skill.SUPER_KAME, 7, 500 },
+                                        { Skill.TAI_TAO_NANG_LUONG, 7, 30000 },{ Skill.LIEN_HOAN, 7, 500 },
+                                        { Skill.ANTOMIC, 7, 700 } }, // skill
+                        new String[] { "|-1|Lũ gà, hãy tiếp chiêu" }, // text chat 1
+                        new String[] {
+                                        "|-1|Haha..Ta chẳng cần tốn sức đánh với các ngươi nữa",
+                                        "|-1|Hơi Thở của Quái Thú",
+                                        "|-1|Kedamono no kokyū",
+                                        "|-2|Hentai Jutsu" }, // text chat 2
+                        new String[] { "|-1|... Đồ này lỏ quá" }, // text chat 3
+                        AppearType.APPEAR_WITH_ANOTHER);
+
+        public static final BossData INOSUKE = new BossData(
+                        "Inosuke Nanh Cuồng Bạo", // name
+                        ConstPlayer.XAYDA, // gender
+                        new short[] { 1131, 1132, 1133, -1, 1, -1 }, // outfit {head, body, leg, bag, aura, eff}
+                        100_000, // dame
+                        new long[] { 400_000_000 }, // hp
+                        new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25,
+                                        26, 27, 28,
+                                        29, 30, 31, 32, 33, 34, 35, 36, 37 }, // map join
+                        new int[][] {
+                                        { Skill.DRAGON, 7, 1000 },{ Skill.LIEN_HOAN, 7, 500 },
+                                        { Skill.LIEN_HOAN, 7, 500 },{ Skill.LIEN_HOAN, 7, 500 },
+                                        { Skill.MA_PHONG_BA, 7, 30000 },{ Skill.LIEN_HOAN, 7, 500 },
+                                        { Skill.THOI_MIEN, 7, 30000 },{ Skill.LIEN_HOAN, 7, 500 },
+                                        { Skill.TAI_TAO_NANG_LUONG, 7, 30000 },{ Skill.LIEN_HOAN_CHUONG, 7, 10000 },{ Skill.LIEN_HOAN, 7, 500 },
+                                        { Skill.ANTOMIC, 7, 700 } ,{ Skill.LIEN_HOAN_CHUONG, 7, 10000 }, { Skill.LIEN_HOAN, 7, 500 }},// skill
+                        new String[] { "|-1|Lũ cạn bả, hãy xem ta xuất chiêu!" }, // text chat 1
+                        new String[] {
+                                        "|-1|Haha..",
+                                        "|-1|Gang cuồng bạoooo",
+                                        "|-2|Lũ thằng này chơi đồ à",
+                                        "|-1|Giáp thống khổ",
+                                        "|-1|Giáp hồi sinh",
+                                        "|-2|Áo choàng bắng giáaaa",
+                                        "|-1|Thập tự kiếm" }, // text chat 2
+                        new String[] { "|-1|... Huhu" }, // text chat 3
+                        AppearType.APPEAR_WITH_ANOTHER);
+
+        public static final BossData ZENITSU = new BossData(
+                        "Zenitsu Hoả Lôi Thần", // name
+                        ConstPlayer.XAYDA, // gender
+                        new short[] { 1125, 1126, 1127, -1, 1, -1 }, // outfit {head, body, leg, bag, aura, eff}
+                        150_000, // dame
+                        new long[] { 500_000_000 }, // hp
+                        new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25,
+                                        26, 27, 28,
+                                        29, 30, 31, 32, 33, 34, 35, 36, 37 }, // map join
+                        new int[][] {
+                                        { Skill.DRAGON, 7, 1000 },{ Skill.LIEN_HOAN, 7, 500 },
+                                        { Skill.LIEN_HOAN, 7, 500 },{ Skill.LIEN_HOAN, 7, 500 },
+                                        { Skill.TROI, 7, 60000 },{ Skill.LIEN_HOAN, 7, 500 },
+                                        { Skill.SOCOLA, 7, 30000 },{ Skill.LIEN_HOAN, 7, 500 },
+                                        { Skill.LIEN_HOAN_CHUONG, 7, 10000 },{ Skill.LIEN_HOAN, 7, 500 },{ Skill.LIEN_HOAN_CHUONG, 7, 10000 },
+                                        { Skill.TAI_TAO_NANG_LUONG, 3, 30000 },{ Skill.LIEN_HOAN, 7, 500 },
+                                        { Skill.TAI_TAO_NANG_LUONG, 7, 30000 },{ Skill.LIEN_HOAN, 7, 500 },{ Skill.LIEN_HOAN_CHUONG, 7, 10000 },
+                                        { Skill.MASENKO, 7, 700 } }, // skill
+                        new String[] { "|-1|Hãy nếm mùi thanh kiếm của ta" }, // text chat 1
+                        new String[] {
+                                        "|-1|Muahahaha",
+                                        "|-1|Hơi Thở Sấm Sét ",
+                                        "|-1|Phích Lịch Nhất Thiểm",
+                                        "|-2|Hentai No Jutsu" ,
+                                        "|-1|Bát Liên" ,
+                                        "|-1|Inosuke thật đáng thương" ,
+                                        "|-1|Nếu tao là cặn bã thì mày là rác rưởi... " ,
+                                        "|-1|Tao cảm thấy có lỗi với ông khi ông có thằng kế thừa thảm hại như mày " ,
+                                        "|-1|Thứ lỗi, sư huynh..." ,
+                                        "|-2|Vậy là mày luôn cõng theo một cô gái dễ thương như vậy." ,
+                                        "|-1|Vui vẻ lắm nhỉ... Hãy trả lại những giọt máu mà tao đã đổ mauuuu" ,
+                                }, // text chat 2
+                        new String[] { "|-1|... Anh sẽ bảo vệ em, Nezuko-chan !!" }, // text chat 3
+                        AppearType.APPEAR_WITH_ANOTHER);
+
+        public static final BossData NEZUKO = new BossData(
+                        "Nezuko Huyết Quỷ Thuật", // name
+                        ConstPlayer.XAYDA, // gender
+                        new short[] { 1128, 1129, 1130, -1, 1, -1 }, // outfit {head, body, leg, bag, aura, eff}
+                        100_000, // dame
+                        new long[] { 550_000_000 }, // hp
+                        new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25,
+                                        26, 27, 28,
+                                        29, 30, 31, 32, 33, 34, 35, 36, 37 }, // map join
+                        new int[][] {
+                                        { Skill.DRAGON, 7, 1000 },{ Skill.LIEN_HOAN, 7, 500 },
+                                        { Skill.LIEN_HOAN, 7, 500 },{ Skill.LIEN_HOAN, 7, 500 },{ Skill.LIEN_HOAN, 7, 500 },
+                                        { Skill.TROI, 7, 60000 },
+                                        { Skill.LIEN_HOAN_CHUONG, 7, 30000 },{ Skill.LIEN_HOAN, 7, 500 },
+                                        { Skill.THOI_MIEN, 7, 30000 },{ Skill.LIEN_HOAN, 7, 500 },{ Skill.LIEN_HOAN, 7, 500 },
+                                        { Skill.TAI_TAO_NANG_LUONG, 7, 30000 },{ Skill.LIEN_HOAN, 7, 500 },
+                                        { Skill.KAMEJOKO, 7, 700 }, { Skill.LIEN_HOAN_CHUONG, 7, 30000 },{ Skill.LIEN_HOAN, 7, 500 } ,}, // skill
+                        new String[] { "|-1|Lũ cạn bả, hãy xem ta xuất chiêu!" }, // text chat 1
+                        new String[] {
+                                        "|-1|Nếm mùi đi",
+                                        "|-1|Khu này sẽ thành cát bụi",
+                                        "|-1|Bộc Huyếttttttttttttt",
+                                        "|-1|Gruhhhhhh",
+                                        "|-2|Lũ này là ai thé",
+                                        "|-2|Huyết Quỷ Thuật!",
+                                        "|-1|Sức mạnh vượt trội",
+                                        "|-1|Tao sẽ hóa vàng tất cả"}, // text chat 2
+                        new String[] { "|-1|... Tanjirooo cứu emmm" }, // text chat 3
+                        AppearType.APPEAR_WITH_ANOTHER);
+
+        public static final BossData BILL2 = new BossData(
+                        "Bill Thần Hủy Diệt", // name
+                        ConstPlayer.XAYDA, // gender
+                        new short[] { 508, 509, 510, -1, 1, -1 }, // outfit {head, body, leg, bag, aura, eff}
+                        150_000, // dame
+                        new long[] { 2_000_000_000 }, // hp
+                        new int[] { 0,4,5,6,29}, // map join
+                        new int[][] {
+                                        { Skill.GALICK, 7, 1000 }, { Skill.LIEN_HOAN_CHUONG, 7, 1000 },{ Skill.LIEN_HOAN, 7, 1000 },
+                                        { Skill.ANTOMIC, 7, 1000 },{ Skill.LIEN_HOAN_CHUONG, 7, 1000 },{ Skill.LIEN_HOAN, 7, 1000 },
+                                        { Skill.MASENKO, 7, 1000 },{ Skill.LIEN_HOAN_CHUONG, 7, 1000 },{ Skill.LIEN_HOAN, 7, 1000 },
+                                        { Skill.TAI_TAO_NANG_LUONG, 7, 5000 },{ Skill.LIEN_HOAN, 7, 1000 },{ Skill.LIEN_HOAN, 7, 1000 },
+                                        { Skill.LIEN_HOAN_CHUONG, 7, 10000 },{ Skill.LIEN_HOAN_CHUONG, 7, 10000 },{ Skill.LIEN_HOAN, 7, 1000 },
+                                        { Skill.TAI_TAO_NANG_LUONG,2, 10000 },{ Skill.TAI_TAO_NANG_LUONG, 4, 10000 },{ Skill.LIEN_HOAN, 7, 1000 },
+                                        { Skill.THAI_DUONG_HA_SAN, 1, 30000 }, { Skill.THAI_DUONG_HA_SAN, 2, 40000 },{ Skill.LIEN_HOAN, 7, 1000 },
+                                        { Skill.LIEN_HOAN, 7, 60000 } ,{ Skill.LIEN_HOAN, 7, 1000 }}, // skill
+                        new String[] { "|-1|Loài người... thật yếu đuối","|-1|Nếu không đem đồ ăn ra cho ta","|-1|Ta sẽ biến nơi này thành cát bụi" }, // text chat 1
+                        new String[] {
+                                        "|-1|Songoku đâu",
+                                        "|-1|Ngươi là Super Saiyan Huyền Thoại à",
+                                        "|-1|Thật yếu đuối",
+                                        "|-1|Mày đúng là một kẻ đáng khinh!!!"}, // text chat 2
+                        new String[] { "|-1|Ngươi... mạnh quá",
+                                       "|-2|Uầy, ngài mạnh vãi loz" }, // text chat 3
+                        REST_30_M, new int[] { BossID.WHIS2 });
+
+        public static final BossData WHIS2 = new BossData(
+                        "Whis Thiên Sứ Hủy Diệt", // name
+                        ConstPlayer.XAYDA, // gender
+                        new short[] { 505, 506, 507, -1, 1, -1 }, // outfit {head, body, leg, bag, aura, eff}
+                        200_000, // dame
+                        new long[] { 1_500_000_000 }, // hp
+                        new int[] { 0,4,5,6,29}, // map join
+                        new int[][] {
+                                        { Skill.DRAGON, 7, 1000 },
+                                        { Skill.LIEN_HOAN, 7, 500 },{ Skill.GALICK, 7, 500 },
+                                        { Skill.LIEN_HOAN_CHUONG, 7, 30000 },{ Skill.LIEN_HOAN, 7, 500 },
+                                        { Skill.THOI_MIEN, 7, 30000 },{ Skill.SUPER_KAME, 7, 500 },
+                                        { Skill.TAI_TAO_NANG_LUONG, 7, 30000 },{ Skill.LIEN_HOAN, 7, 500 },
+                                        { Skill.ANTOMIC, 7, 700 } }, // skill
+                        new String[] { "|-1|Đây là trái đất ư", "|-1|Thật đáng để hủy diệt nhỉ"}, // text chat 1
+                        new String[] {
+                                        "|-1|Vào đây",
+                                        "|-1|Haha..Ta chẳng cần tốn sức đánh với các ngươi nữa"}, // text chat 2
+                        new String[] { "|-1|... Mạnh quáaa" }, // text chat 3
+                        AppearType.APPEAR_WITH_ANOTHER);
 
         // public static final BossData BROLY = new BossData(
         // "Broly", // name

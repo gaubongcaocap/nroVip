@@ -457,25 +457,27 @@ public class PlayerDAO {
                 //data bag
                 for (Item item : player.inventory.itemsBag) {
                     JSONArray opt = new JSONArray();
-                    if (item.isNotNullItem()) {
-                        dataItem.add(item.template.id);
-                        dataItem.add(item.quantity);
-                        JSONArray options = new JSONArray();
-                        for (Item.ItemOption io : item.itemOptions) {
-                            opt.add(io.optionTemplate.id);
-                            opt.add(io.param);
-                            options.add(opt.toJSONString());
-                            opt.clear();
+                    if(!item.isVND()) {
+                        if (item.isNotNullItem()) {
+                            dataItem.add(item.template.id);
+                            dataItem.add(item.quantity);
+                            JSONArray options = new JSONArray();
+                            for (Item.ItemOption io : item.itemOptions) {
+                                opt.add(io.optionTemplate.id);
+                                opt.add(io.param);
+                                options.add(opt.toJSONString());
+                                opt.clear();
+                            }
+                            dataItem.add(options.toJSONString());
+                        } else {
+                            dataItem.add(-1);
+                            dataItem.add(0);
+                            dataItem.add(opt.toJSONString());
                         }
-                        dataItem.add(options.toJSONString());
-                    } else {
-                        dataItem.add(-1);
-                        dataItem.add(0);
-                        dataItem.add(opt.toJSONString());
+                        dataItem.add(item.createTime);
+                        dataArray.add(dataItem.toJSONString());
+                        dataItem.clear();
                     }
-                    dataItem.add(item.createTime);
-                    dataArray.add(dataItem.toJSONString());
-                    dataItem.clear();
                 }
                 String itemsBag = dataArray.toJSONString();
                 dataArray.clear();
@@ -1148,10 +1150,11 @@ public class PlayerDAO {
         }
     }
  public static boolean sd(Player player, int num) {
-        String updateQuery = "UPDATE account SET cash = cash + ? WHERE id = ?";
+        String updateQuery = "UPDATE player SET vnd = vnd + ? WHERE id = ? and account_id = ?";
         try ( Connection con = DBConnecter.getConnectionServer();  PreparedStatement ps = con.prepareStatement(updateQuery)) {
             ps.setInt(1, num);
-            ps.setInt(2, player.getSession().userId);
+            ps.setLong(2, player.id);
+            ps.setInt(3, player.getSession().userId);
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected > 0) {
                 player.getSession().cash += num;

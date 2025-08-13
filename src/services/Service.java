@@ -1057,7 +1057,6 @@ public class Service {
                 short head = player.getHead();
                 short body = player.getBody();
                 short leg = player.getLeg();
-
                 msg.writer().writeShort(head);//set head
                 msg.writer().writeShort(body);//setbody
                 msg.writer().writeShort(leg);//set leg

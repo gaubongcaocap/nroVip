@@ -136,6 +136,13 @@ public class Item {
         return this.template.level == 15;
     }
 
+    public boolean isVND() {
+        if (isNotNullItem()) {
+            return this.template.type == 38;
+        }
+        return false;
+    }
+
     public boolean isDTL() {
         return this.template.level == 13;
     }

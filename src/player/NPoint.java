@@ -1319,10 +1319,16 @@ public class NPoint {
         // Xử lý cuồng nộ
         if (this.player.itemTime != null && this.player.itemTime.isUseCuongNo && !this.player.itemTime.isUseCuongNo2) {
             dame *= 2;
-        }
-        if (this.player.itemTime != null && this.player.itemTime.isUseCuongNo2) {
+        } else if (this.player.itemTime != null && this.player.itemTime.isUseCuongNo2) {
             dame *= 2.2;
         }
+
+        if (this.player.itemTime != null && this.player.itemTime.isUserBanhChung) {
+            dame += (dame * 15 / 100L);
+            hp +=  (hp * 25 / 100L);
+            mp +=  (mp * 25 / 100L);
+        }
+
         if (this.player.itemTime != null && this.player.itemTime.isUseKhauTrang) {
             this.tlDameAttMob.add(10);
         }
@@ -1417,6 +1423,8 @@ public class NPoint {
         // DK
         if (this.player.itemTime != null && this.player.itemTime.isUseDK) {
             dame += (dame * 10 / 100L);
+            hp += (hp * 15 / 100L);
+            mp += (mp * 15 / 100L);
         }
 
         // if (dame > 2_000_000_000) {

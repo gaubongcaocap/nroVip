@@ -202,4 +202,12 @@ public class BossID {
     public static final int ANDROID_21 = -399;
     public static final int GOKU_HUYDIET = -400;
     public static final int CADIC_HUYDIET = -401;
+    public static final int TANJIRO = -402;
+    public static final int INOSUKE_PIG = -403;
+    public static final int INOSUKE = -404;
+    public static final int ZENITSU = -405;
+    public static final int NEZUKO = -406;
+
+    public static final int BILL2 = -407;
+    public static final int WHIS2 = -408;
 }
