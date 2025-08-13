@@ -74,10 +74,6 @@ public class TaoDaHematite {
         InventoryService.gI().subQuantityItemsBag(player, saoPhaLeC2, 1);
         InventoryService.gI().sendItemBag(player);
         Service.gI().sendMoney(player);
-        // dọn danh sách vì nguyên liệu đã mất
-        if (player.combine != null && player.combine.itemsCombine != null) {
-            player.combine.itemsCombine.clear();
-        }
         CombineService.gI().reOpenItemCombine(player);
     }
 }

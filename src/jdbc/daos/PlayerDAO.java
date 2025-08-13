@@ -457,8 +457,8 @@ public class PlayerDAO {
                 //data bag
                 for (Item item : player.inventory.itemsBag) {
                     JSONArray opt = new JSONArray();
-                    if(!item.isVND()) {
-                        if (item.isNotNullItem()) {
+                    if (item.isNotNullItem()) {
+                        if(!item.isVND()) {
                             dataItem.add(item.template.id);
                             dataItem.add(item.quantity);
                             JSONArray options = new JSONArray();
@@ -469,15 +469,15 @@ public class PlayerDAO {
                                 opt.clear();
                             }
                             dataItem.add(options.toJSONString());
-                        } else {
-                            dataItem.add(-1);
-                            dataItem.add(0);
-                            dataItem.add(opt.toJSONString());
                         }
-                        dataItem.add(item.createTime);
-                        dataArray.add(dataItem.toJSONString());
-                        dataItem.clear();
+                    } else {
+                        dataItem.add(-1);
+                        dataItem.add(0);
+                        dataItem.add(opt.toJSONString());
                     }
+                    dataItem.add(item.createTime);
+                    dataArray.add(dataItem.toJSONString());
+                    dataItem.clear();
                 }
                 String itemsBag = dataArray.toJSONString();
                 dataArray.clear();
