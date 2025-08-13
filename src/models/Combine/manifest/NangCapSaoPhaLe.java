@@ -104,6 +104,9 @@ public class NangCapSaoPhaLe {
         InventoryService.gI().subQuantityItemsBag(player, saoPhaLeC1, 1);
         InventoryService.gI().sendItemBag(player);
         Service.gI().sendMoney(player);
+        if (player.combine != null && player.combine.itemsCombine != null) {
+            player.combine.itemsCombine.clear();
+        }
         CombineService.gI().reOpenItemCombine(player);
     }
 }

@@ -17,3 +17,4 @@ Thumbs.db
 /.idea/
 /*.iml
 .vscode/
+admin-page/db_config.json

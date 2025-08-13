@@ -130,18 +130,28 @@ public class CuongHoaLoSaoPhaLe {
             CombineService.gI().sendEffectCombineItem(player, (byte) 7, (short) trangBi.template.iconID, (short) -1);
             Util.setTimeout(() -> {
                 CombineService.gI().baHatMit.npcChat(player, "Chúc mừng con nhé");
+                CombineService.gI().reOpenItemCombine(player);
             }, 2000);
         } else {
             CombineService.gI().sendEffectCombineItem(player, (byte) 8, (short) -1, (short) -1);
-            // Util.setTimeout(() -> {
-            //     CombineService.gI().baHatMit.npcChat(player, "Con còn hơi non nên đừng buồn con nhé");
-            // }, 2000);
+            Util.setTimeout(() -> {
+                CombineService.gI().baHatMit.npcChat(player, "Con còn hơi non nên đừng buồn con nhé");
+                CombineService.gI().reOpenItemCombine(player);
+            }, 2000);
         }
+        // Sau khi trừ gem, xóa nguyên liệu khỏi túi và gửi item bag:
         player.inventory.subGemAndRuby(50);
         InventoryService.gI().subQuantityItemsBag(player, hematite, 1);
         InventoryService.gI().subQuantityItemsBag(player, duiDuc, 1);
         InventoryService.gI().sendItemBag(player);
         Service.gI().sendMoney(player);
-        CombineService.gI().reOpenItemCombine(player);
+        /*
+        * Hai nguyên liệu (Hematite và Dùi đục) đã bị tiêu thụ và biến mất khỏi hành trang.
+        * Nếu vẫn giữ chúng trong itemsCombine, client sẽ không tìm thấy chúng và không mở lại bảng.
+        */
+        if (player.combine != null && player.combine.itemsCombine != null) {
+            player.combine.itemsCombine.remove(hematite);
+            player.combine.itemsCombine.remove(duiDuc);
+        }
     }
 }
